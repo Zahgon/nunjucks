@@ -1,0 +1,6305 @@
+[
+ {
+  "name": "up0000",
+  "args": [
+   "-s",
+   "Hello world"
+  ],
+  "context": null,
+  "stdout": "Hello world",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0001",
+  "args": [
+   "-s",
+   "Hello world, {{ name }}"
+  ],
+  "context": "{\"name\":\"James\"}",
+  "stdout": "Hello world, James",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0002",
+  "args": [
+   "-s",
+   "Hello world, {{name}}{{suffix}}, how are you"
+  ],
+  "context": "{\"name\":\"James\",\"suffix\":\" Long\"}",
+  "stdout": "Hello world, James Long, how are you",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0003",
+  "args": [
+   "-s",
+   "foo\\nbar"
+  ],
+  "context": null,
+  "stdout": "foo\\nbar",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0004",
+  "args": [
+   "-s",
+   " "
+  ],
+  "context": null,
+  "stdout": " ",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0005",
+  "args": [
+   "-s",
+   "{{ foo.bar }}"
+  ],
+  "context": "{\"foo\":{\"bar\":\"baz\"}}",
+  "stdout": "baz",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0006",
+  "args": [
+   "-s",
+   "{{ foo[\"bar\"] }}"
+  ],
+  "context": "{\"foo\":{\"bar\":\"baz\"}}",
+  "stdout": "baz",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0007",
+  "args": [
+   "-s",
+   "{{ foo }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0008",
+  "args": [
+   "-s",
+   "{{ foo.bar }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0009",
+  "args": [
+   "-s",
+   "{{ foo.bar.baz }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0010",
+  "args": [
+   "-s",
+   "{{ foo.bar.baz[\"biz\"].mumble }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0011",
+  "args": [
+   "-s",
+   "{{ foo }}"
+  ],
+  "context": "{\"foo\":0}",
+  "stdout": "0",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0012",
+  "args": [
+   "-s",
+   "{{ foo }}"
+  ],
+  "context": "{\"foo\":false}",
+  "stdout": "false",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0013",
+  "args": [
+   "-s",
+   "{{ none }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0014",
+  "args": [
+   "-s",
+   "{% if not none %}yes{% endif %}"
+  ],
+  "context": null,
+  "stdout": "yes",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0015",
+  "args": [
+   "-s",
+   "{{ none|default(\"d\", false) }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0016",
+  "args": [
+   "-s",
+   "{% switch foo %}{% case \"bar\" %}BAR{% case \"baz\" %}BAZ{% default %}NEITHER FOO NOR BAR{% endswitch %}"
+  ],
+  "context": null,
+  "stdout": "NEITHER FOO NOR BAR",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0017",
+  "args": [
+   "-s",
+   "{% switch foo %}{% case \"bar\" %}BAR{% case \"baz\" %}BAZ{% default %}NEITHER FOO NOR BAR{% endswitch %}"
+  ],
+  "context": "{\"foo\":\"bar\"}",
+  "stdout": "BAR",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0018",
+  "args": [
+   "-s",
+   "{% switch foo %}{% case \"bar\" %}BAR{% case \"baz\" %}BAZ{% default %}NEITHER FOO NOR BAR{% endswitch %}"
+  ],
+  "context": "{\"foo\":\"baz\"}",
+  "stdout": "BAZ",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0019",
+  "args": [
+   "-s",
+   "{% switch foo %}{% case \"bar\" %}BAR{% case \"baz\" %}BAZ{% endswitch %}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0020",
+  "args": [
+   "-s",
+   "{% switch foo %}{% case \"bar\" %}{% case \"baz\" %}BAR{% endswitch %}"
+  ],
+  "context": "{\"foo\":\"bar\"}",
+  "stdout": "BAR",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0021",
+  "args": [
+   "-s",
+   "{% switch foo %}{% case \"bar\" %}{% case \"baz\" %}BAR{% endswitch %}"
+  ],
+  "context": "{\"foo\":\"baz\"}",
+  "stdout": "BAR",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0022",
+  "args": [
+   "-s",
+   "Give me some {% if hungry %}pizza{% else %}water{% endif %}"
+  ],
+  "context": "{\"hungry\":true}",
+  "stdout": "Give me some pizza",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0023",
+  "args": [
+   "-s",
+   "Give me some {% if hungry %}pizza{% else %}water{% endif %}"
+  ],
+  "context": "{\"hungry\":false}",
+  "stdout": "Give me some water",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0024",
+  "args": [
+   "-s",
+   "{% if not hungry %}good{% endif %}"
+  ],
+  "context": "{\"hungry\":false}",
+  "stdout": "good",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0025",
+  "args": [
+   "-s",
+   "{% if hungry and like_pizza %}good{% endif %}"
+  ],
+  "context": "{\"hungry\":true,\"like_pizza\":true}",
+  "stdout": "good",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0026",
+  "args": [
+   "-s",
+   "{% if hungry or like_pizza %}good{% endif %}"
+  ],
+  "context": "{\"hungry\":false,\"like_pizza\":true}",
+  "stdout": "good",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0027",
+  "args": [
+   "-s",
+   "{% if (hungry or like_pizza) and anchovies %}good{% endif %}"
+  ],
+  "context": "{\"hungry\":false,\"like_pizza\":true,\"anchovies\":true}",
+  "stdout": "good",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0028",
+  "args": [
+   "-s",
+   "{% if food == \"pizza\" %}pizza{% endif %}{% if food ==\"beer\" %}beer{% endif %}"
+  ],
+  "context": "{\"food\":\"beer\"}",
+  "stdout": "beer",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0029",
+  "args": [
+   "-s",
+   "{% if \"pizza\" in food %}yum{% endif %}"
+  ],
+  "context": "{\"food\":{\"pizza\":true}}",
+  "stdout": "yum",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0030",
+  "args": [
+   "-s",
+   "{% if pizza %}yum{% elif anchovies %}yuck{% endif %}"
+  ],
+  "context": "{\"pizza\":true}",
+  "stdout": "yum",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0031",
+  "args": [
+   "-s",
+   "{% if pizza %}yum{% elseif anchovies %}yuck{% endif %}"
+  ],
+  "context": "{\"pizza\":true}",
+  "stdout": "yum",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0032",
+  "args": [
+   "-s",
+   "{% if pizza %}yum{% elif anchovies %}yuck{% endif %}"
+  ],
+  "context": "{\"anchovies\":true}",
+  "stdout": "yuck",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0033",
+  "args": [
+   "-s",
+   "{% if pizza %}yum{% elseif anchovies %}yuck{% endif %}"
+  ],
+  "context": "{\"anchovies\":true}",
+  "stdout": "yuck",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0034",
+  "args": [
+   "-s",
+   "{% if topping == \"pepperoni\" %}yum{% elseif topping == \"anchovies\" %}yuck{% else %}hmmm{% endif %}"
+  ],
+  "context": "{\"topping\":\"sausage\"}",
+  "stdout": "hmmm",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0035",
+  "args": [
+   "-s",
+   "{{ \"foo\" if bar else \"baz\" }}"
+  ],
+  "context": null,
+  "stdout": "baz",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0036",
+  "args": [
+   "-s",
+   "{{ \"foo\" if bar else \"baz\" }}"
+  ],
+  "context": "{\"bar\":true}",
+  "stdout": "foo",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0037",
+  "args": [
+   "-s",
+   "Give me some {{ \"pizza\" if hungry else \"water\" }}"
+  ],
+  "context": "{\"hungry\":true}",
+  "stdout": "Give me some pizza",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0038",
+  "args": [
+   "-s",
+   "Give me some {{ \"pizza\" if hungry else \"water\" }}"
+  ],
+  "context": "{\"hungry\":false}",
+  "stdout": "Give me some water",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0039",
+  "args": [
+   "-s",
+   "{{ \"good\" if not hungry }}"
+  ],
+  "context": "{\"hungry\":false}",
+  "stdout": "good",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0040",
+  "args": [
+   "-s",
+   "{{ \"good\" if hungry and like_pizza }}"
+  ],
+  "context": "{\"hungry\":true,\"like_pizza\":true}",
+  "stdout": "good",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0041",
+  "args": [
+   "-s",
+   "{{ \"good\" if hungry or like_pizza }}"
+  ],
+  "context": "{\"hungry\":false,\"like_pizza\":true}",
+  "stdout": "good",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0042",
+  "args": [
+   "-s",
+   "{{ \"good\" if (hungry or like_pizza) and anchovies }}"
+  ],
+  "context": "{\"hungry\":false,\"like_pizza\":true,\"anchovies\":true}",
+  "stdout": "good",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0043",
+  "args": [
+   "-s",
+   "{{ \"pizza\" if food == \"pizza\" }}{{ \"beer\" if food == \"beer\" }}"
+  ],
+  "context": "{\"food\":\"beer\"}",
+  "stdout": "beer",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0044",
+  "args": [
+   "-s",
+   "{% set var = \"foo\" %}{% for i in [1] %}{% set var = none %}{{ var }}{% endfor %}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0045",
+  "args": [
+   "-s",
+   "{{ 3 + 4 - 5 * 6 / 10 }}"
+  ],
+  "context": null,
+  "stdout": "4",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0046",
+  "args": [
+   "-s",
+   "{{ 4**5 }}"
+  ],
+  "context": null,
+  "stdout": "1024",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0047",
+  "args": [
+   "-s",
+   "{{ 9//5 }}"
+  ],
+  "context": null,
+  "stdout": "1",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0048",
+  "args": [
+   "-s",
+   "{{ 9%5 }}"
+  ],
+  "context": null,
+  "stdout": "4",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0049",
+  "args": [
+   "-s",
+   "{{ -5 }}"
+  ],
+  "context": null,
+  "stdout": "-5",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0050",
+  "args": [
+   "-s",
+   "{% if 3 < 4 %}yes{% endif %}"
+  ],
+  "context": null,
+  "stdout": "yes",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0051",
+  "args": [
+   "-s",
+   "{% if 3 > 4 %}yes{% endif %}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0052",
+  "args": [
+   "-s",
+   "{% if 9 >= 10 %}yes{% endif %}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0053",
+  "args": [
+   "-s",
+   "{% if 10 >= 10 %}yes{% endif %}"
+  ],
+  "context": null,
+  "stdout": "yes",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0054",
+  "args": [
+   "-s",
+   "{% if 9 <= 10 %}yes{% endif %}"
+  ],
+  "context": null,
+  "stdout": "yes",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0055",
+  "args": [
+   "-s",
+   "{% if 10 <= 10 %}yes{% endif %}"
+  ],
+  "context": null,
+  "stdout": "yes",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0056",
+  "args": [
+   "-s",
+   "{% if 11 <= 10 %}yes{% endif %}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0057",
+  "args": [
+   "-s",
+   "{% if 10 != 10 %}yes{% endif %}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0058",
+  "args": [
+   "-s",
+   "{% if 10 == 10 %}yes{% endif %}"
+  ],
+  "context": null,
+  "stdout": "yes",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0059",
+  "args": [
+   "-s",
+   "{% if \"0\" == 0 %}yes{% endif %}"
+  ],
+  "context": null,
+  "stdout": "yes",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0060",
+  "args": [
+   "-s",
+   "{% if \"0\" === 0 %}yes{% endif %}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0061",
+  "args": [
+   "-s",
+   "{% if \"0\" !== 0 %}yes{% endif %}"
+  ],
+  "context": null,
+  "stdout": "yes",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0062",
+  "args": [
+   "-s",
+   "{% if 0 == false %}yes{% endif %}"
+  ],
+  "context": null,
+  "stdout": "yes",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0063",
+  "args": [
+   "-s",
+   "{% if 0 === false %}yes{% endif %}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0064",
+  "args": [
+   "-s",
+   "{{ \"yes\" if 1 is odd else \"no\"  }}"
+  ],
+  "context": null,
+  "stdout": "yes",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0065",
+  "args": [
+   "-s",
+   "{{ \"yes\" if 2 is even else \"no\"  }}"
+  ],
+  "context": null,
+  "stdout": "yes",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0066",
+  "args": [
+   "-s",
+   "{{ \"yes\" if 2 is odd else \"no\"  }}"
+  ],
+  "context": null,
+  "stdout": "no",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0067",
+  "args": [
+   "-s",
+   "{{ \"yes\" if 1 is even else \"no\"  }}"
+  ],
+  "context": null,
+  "stdout": "no",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0068",
+  "args": [
+   "-s",
+   "{% if 1 in [1, 2] %}yes{% endif %}"
+  ],
+  "context": null,
+  "stdout": "yes",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0069",
+  "args": [
+   "-s",
+   "{% if 1 in [2, 3] %}yes{% endif %}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0070",
+  "args": [
+   "-s",
+   "{% if 1 not in [1, 2] %}yes{% endif %}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0071",
+  "args": [
+   "-s",
+   "{% if 1 not in [2, 3] %}yes{% endif %}"
+  ],
+  "context": null,
+  "stdout": "yes",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0072",
+  "args": [
+   "-s",
+   "{% if \"a\" in vals %}yes{% endif %}"
+  ],
+  "context": "{\"vals\":[\"a\",\"b\"]}",
+  "stdout": "yes",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0073",
+  "args": [
+   "-s",
+   "{% if \"a\" in obj %}yes{% endif %}"
+  ],
+  "context": "{\"obj\":{\"a\":true}}",
+  "stdout": "yes",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0074",
+  "args": [
+   "-s",
+   "{% if \"a\" in obj %}yes{% endif %}"
+  ],
+  "context": "{\"obj\":{\"b\":true}}",
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0075",
+  "args": [
+   "-s",
+   "{% if \"foo\" in \"foobar\" %}yes{% endif %}"
+  ],
+  "context": null,
+  "stdout": "yes",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0076",
+  "args": [
+   "-s",
+   "{% include \"broken-import.njk\" %}"
+  ],
+  "context": "{\"str\":\"abc\"}",
+  "stdout": "",
+  "stderr": "Template render error: (unknown path)\n  Template render error: (unknown path)\n  Template render error: ({templates}/broken-import.njk)\n  Template render error: (unknown path)\n  Template render error: ({templates}/broken-import.njk)\n  Error: template not found: doesnotexist\n",
+  "code": 1
+ },
+ {
+  "name": "up0077",
+  "args": [
+   "-s",
+   "{{ 4 ~ 'hello' }}"
+  ],
+  "context": null,
+  "stdout": "4hello",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0078",
+  "args": [
+   "-s",
+   "{{ 4 ~ 5 }}"
+  ],
+  "context": null,
+  "stdout": "45",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0079",
+  "args": [
+   "-s",
+   "{{ 'a' ~ 'b' ~ 5 }}"
+  ],
+  "context": null,
+  "stdout": "ab5",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0080",
+  "args": [
+   "-s",
+   "{% macro foo() %}This is a macro{% endmacro %}{{ foo() }}"
+  ],
+  "context": null,
+  "stdout": "This is a macro",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0081",
+  "args": [
+   "-s",
+   "{% macro foo(x, y) %}{{ y }}{% endmacro %}{{ foo(1) }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0082",
+  "args": [
+   "-s",
+   "{% macro foo(x) %}{{ x|title }}{% endmacro %}{{ foo(\"foo\") }}"
+  ],
+  "context": null,
+  "stdout": "Foo",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0083",
+  "args": [
+   "-s",
+   "{% macro foo(x, y) %}{{ y }}{% endmacro %}{{ foo(1, 2) }}"
+  ],
+  "context": null,
+  "stdout": "2",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0084",
+  "args": [
+   "-s",
+   "{% macro foo(x, y, z=5) %}{{ y }}{% endmacro %}{{ foo(1, 2) }}"
+  ],
+  "context": null,
+  "stdout": "2",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0085",
+  "args": [
+   "-s",
+   "{% macro foo(x, y, z=5) %}{{ z }}{% endmacro %}{{ foo(1, 2) }}"
+  ],
+  "context": null,
+  "stdout": "5",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0086",
+  "args": [
+   "-s",
+   "{% macro foo(x, y, z=5) %}{{ y }}{% endmacro %}{{ foo(1, y=2) }}"
+  ],
+  "context": null,
+  "stdout": "2",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0087",
+  "args": [
+   "-s",
+   "{% macro foo(x, y, z=5) %}{{ x }}{{ y }}{{ z }}{% endmacro %}{{ foo(x=1, y=2) }}"
+  ],
+  "context": null,
+  "stdout": "125",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0088",
+  "args": [
+   "-s",
+   "{% macro foo(x, y, z=5) %}{{ x }}{{ y }}{{ z }}{% endmacro %}{{ foo(x=1, y=2, z=3) }}"
+  ],
+  "context": null,
+  "stdout": "123",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0089",
+  "args": [
+   "-s",
+   "{% macro foo(x, y=2, z=5) %}{{ x }}{{ y }}{{ z }}{% endmacro %}{{ foo(1, z=3) }}"
+  ],
+  "context": null,
+  "stdout": "123",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0090",
+  "args": [
+   "-s",
+   "{% macro foo(x, y=2, z=5) %}{{ x }}{{ y }}{{ z }}{% endmacro %}{{ foo(1) }}"
+  ],
+  "context": null,
+  "stdout": "125",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0091",
+  "args": [
+   "-s",
+   "{% macro foo(x, y=2, z=5) %}{{ x }}{{ y }}{{ z }}{% endmacro %}{{ foo(1, 10, 20) }}"
+  ],
+  "context": null,
+  "stdout": "11020",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0092",
+  "args": [
+   "-s",
+   "{% extends \"base.njk\" %}{% macro foo(x, y=2, z=5) %}{{ x }}{{ y }}{{ z }}{% endmacro %}{% block block1 %}{{ foo(1) }}{% endblock %}"
+  ],
+  "context": null,
+  "stdout": "Foo125BazFizzle",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0093",
+  "args": [
+   "-s",
+   "{% block bar %}{% macro foo(x, y=2, z=5) %}{{ x }}{{ y }}{{ z }}{% endmacro %}{% endblock %}{% block baz %}{{ foo(1) }}{% endblock %}"
+  ],
+  "context": null,
+  "stdout": "125",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0094",
+  "args": [
+   "-s",
+   "{% macro foo() %}{% include \"include.njk\" %}{% endmacro %}{{ foo() }}"
+  ],
+  "context": "{\"name\":\"james\"}",
+  "stdout": "FooInclude james",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0095",
+  "args": [
+   "-s",
+   "{% macro foo() %}{% set x = \"foo\"%}{{ x }}{% endmacro %}{% set x = \"bar\" %}{{ x }}{{ foo() }}{{ x }}"
+  ],
+  "context": null,
+  "stdout": "barfoobar",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0096",
+  "args": [
+   "-s",
+   "{% macro setFoo() %}{% set x = \"foo\" %}{{ x }}{% endmacro %}{% macro display() %}{% set x = \"bar\" %}{{ setFoo() }}{{ x }}{% endmacro %}{{ display() }}"
+  ],
+  "context": null,
+  "stdout": "foobar",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0097",
+  "args": [
+   "-s",
+   "{% macro setFoo() %}{% for y in [1] %}{% set x = \"foo\" %}{{ x }}{% endfor %}{% endmacro %}{% macro display() %}{% set x = \"bar\" %}{{ setFoo() }}{{ x }}{% endmacro %}{{ display() }}"
+  ],
+  "context": null,
+  "stdout": "foobar",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0098",
+  "args": [
+   "-s",
+   "{% macro foo(topLevel, prefix=\"\") %}{% if topLevel %}{% set x = \"\" %}{% for i in [1,2] %}{{ foo(false, x) }}{% endfor %}{% else %}{% set x = prefix + \"foo\" %}{{ x }}{% endif %}{% endmacro %}{{ foo(true) }}"
+  ],
+  "context": null,
+  "stdout": "foofoo",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0099",
+  "args": [
+   "-s",
+   "{% macro one(var) %}{{ two() }}{% endmacro %}{% macro two() %}{{ var }}{% endmacro %}{{ one(\"foo\") }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0100",
+  "args": [
+   "-s",
+   "{% macro wrap(el) %}<{{ el }}>{{ caller() }}</{{ el }}>{% endmacro %}{% call wrap(\"div\") %}Hello{% endcall %}"
+  ],
+  "context": null,
+  "stdout": "<div>Hello</div>",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0101",
+  "args": [
+   "-s",
+   "{% macro list(items) %}<ul>{% for i in items %}<li>{{ caller(i) }}</li>{% endfor %}</ul>{% endmacro %}{% call(item) list([\"a\", \"b\"]) %}{{ item }}{% endcall %}"
+  ],
+  "context": null,
+  "stdout": "<ul><li>a</li><li>b</li></ul>",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0102",
+  "args": [
+   "-s",
+   "{% import \"import.njk\" as imp %}{% call imp.wrap(\"span\") %}Hey{% endcall %}"
+  ],
+  "context": null,
+  "stdout": "<span>Hey</span>",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0103",
+  "args": [
+   "-s",
+   "{% import \"import.njk\" as imp %}{{ imp.foo() }} {{ imp.bar }}"
+  ],
+  "context": null,
+  "stdout": "Here's a macro baz",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0104",
+  "args": [
+   "-s",
+   "{% from \"import.njk\" import foo as baz, bar %}{{ bar }} {{ baz() }}"
+  ],
+  "context": null,
+  "stdout": "baz Here's a macro",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0105",
+  "args": [
+   "-s",
+   "{% for i in [1,2] %}start: {{ num }}{% from \"import.njk\" import bar as num %}end: {{ num }}{% endfor %}final: {{ num }}"
+  ],
+  "context": null,
+  "stdout": "start: end: bazstart: bazend: bazfinal: ",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0106",
+  "args": [
+   "-s",
+   "{% set bar = \"BAR\" %}{% import \"import-context.njk\" as imp with context %}{{ imp.foo() }}"
+  ],
+  "context": null,
+  "stdout": "Here's BAR",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0107",
+  "args": [
+   "-s",
+   "{% set bar = \"BAR\" %}{% from \"import-context.njk\" import foo with context %}{{ foo() }}"
+  ],
+  "context": null,
+  "stdout": "Here's BAR",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0108",
+  "args": [
+   "-s",
+   "{% set bar = \"BAR\" %}{% import \"import-context-set.njk\" as imp %}{{ bar }}"
+  ],
+  "context": null,
+  "stdout": "BAR",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0109",
+  "args": [
+   "-s",
+   "{% set bar = \"BAR\" %}{% import \"import-context-set.njk\" as imp %}{{ imp.bar }}"
+  ],
+  "context": null,
+  "stdout": "FOO",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0110",
+  "args": [
+   "-s",
+   "{% set bar = \"BAR\" %}{% import \"import-context-set.njk\" as imp with context %}{{ bar }}{{ buzz }}"
+  ],
+  "context": null,
+  "stdout": "FOO",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0111",
+  "args": [
+   "-s",
+   "{% set bar = \"BAR\" %}{% import \"import-context-set.njk\" as imp with context %}{{ imp.bar }}{{ buzz }}"
+  ],
+  "context": null,
+  "stdout": "FOO",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0112",
+  "args": [
+   "-s",
+   "{% set bar = \"BAR\" %}{% import \"import-context.njk\" as imp without context %}{{ imp.foo() }}"
+  ],
+  "context": null,
+  "stdout": "Here's ",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0113",
+  "args": [
+   "-s",
+   "{% set bar = \"BAR\" %}{% from \"import-context.njk\" import foo without context %}{{ foo() }}"
+  ],
+  "context": null,
+  "stdout": "Here's ",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0114",
+  "args": [
+   "-s",
+   "{% set bar = \"BAR\" %}{% import \"import-context.njk\" as imp %}{{ imp.foo() }}"
+  ],
+  "context": null,
+  "stdout": "Here's ",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0115",
+  "args": [
+   "-s",
+   "{% set bar = \"BAR\" %}{% from \"import-context.njk\" import foo %}{{ foo() }}"
+  ],
+  "context": null,
+  "stdout": "Here's ",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0116",
+  "args": [
+   "-s",
+   "{% extends \"base.njk\" %}"
+  ],
+  "context": null,
+  "stdout": "FooBarBazFizzle",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0117",
+  "args": [
+   "-s",
+   "hola {% extends \"base.njk\" %} hizzle mumble"
+  ],
+  "context": null,
+  "stdout": "FooBarBazFizzle",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0118",
+  "args": [
+   "-s",
+   "{% extends \"base.njk\" %}{% block block1 %}BAR{% endblock %}"
+  ],
+  "context": null,
+  "stdout": "FooBARBazFizzle",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0119",
+  "args": [
+   "-s",
+   "{% extends \"base.njk\" %}{% block block1 %}BAR{% endblock %}{% block block2 %}BAZ{% endblock %}"
+  ],
+  "context": null,
+  "stdout": "FooBARBAZFizzle",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0120",
+  "args": [
+   "-s",
+   "hola {% extends tmpl %} hizzle mumble"
+  ],
+  "context": "{\"tmpl\":\"base.njk\"}",
+  "stdout": "FooBarBazFizzle",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0121",
+  "args": [
+   "-s",
+   "{% if false %}{% extends \"base.njk\" %}{% endif %}{% block block1 %}BAR{% endblock %}"
+  ],
+  "context": null,
+  "stdout": "BAR",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0122",
+  "args": [
+   "-s",
+   "{% if true %}{% extends \"base.njk\" %}{% endif %}{% block block1 %}BAR{% endblock %}"
+  ],
+  "context": null,
+  "stdout": "FooBARBazFizzle",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0123",
+  "args": [
+   "-s",
+   "{% if true %}{% extends \"base.njk\" %}{% else %}{% extends \"base2.njk\" %}{% endif %}{% block block1 %}HELLO{% endblock %}"
+  ],
+  "context": null,
+  "stdout": "FooHELLOBazFizzle",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0124",
+  "args": [
+   "-s",
+   "{% if false %}{% extends \"base.njk\" %}{% else %}{% extends \"base2.njk\" %}{% endif %}{% block item %}hello{{ item }}{% endblock %}"
+  ],
+  "context": null,
+  "stdout": "hello1hello2",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0125",
+  "args": [
+   "-s",
+   "{% extends \"simple-base.njk\" %}{% block test %}{% endblock %}{% block test %}{% endblock %}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "Template render error: (unknown path)\n  Error: Block \"test\" defined more than once.\n",
+  "code": 1
+ },
+ {
+  "name": "up0126",
+  "args": [
+   "-s",
+   "{% extends \"base.njk\" %}{% block block1 %}{% block nested %}BAR{% endblock %}{% endblock %}"
+  ],
+  "context": null,
+  "stdout": "FooBARBazFizzle",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0127",
+  "args": [
+   "-s",
+   "{% extends \"base.njk\" %}{% block block1 %}{{ super() }}BAR{% endblock %}"
+  ],
+  "context": null,
+  "stdout": "FooBarBARBazFizzle",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0128",
+  "args": [
+   "-s",
+   "{% extends \"base-inherit.njk\" %}{% block block1 %}*{{ super() }}*{% endblock %}"
+  ],
+  "context": null,
+  "stdout": "Foo**Bar**BazFizzle",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0129",
+  "args": [
+   "-s",
+   "{% extends \"base-show.njk\" %}{% set var = \"child\" %}{% block main %}{{ super() }}{% endblock %}"
+  ],
+  "context": null,
+  "stdout": "child",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0130",
+  "args": [
+   "-s",
+   "{% extends \"base-show.njk\" %}{% block main %}{% set var = \"child\" %}{{ super() }}{% endblock %}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0131",
+  "args": [
+   "-s",
+   "{% extends \"base-set.njk\" %}{% block main %}{{ var }}{% endblock %}"
+  ],
+  "context": null,
+  "stdout": "parent",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0132",
+  "args": [
+   "-s",
+   "{% extends \"base-set-inside-block.njk\" %}{% block main %}{{ super() }}{{ var }}{% endblock %}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0133",
+  "args": [
+   "-s",
+   "{% extends \"base-set-and-show.njk\" %}{% block main %}{% set var = \"child\" %}{% endblock %}"
+  ],
+  "context": null,
+  "stdout": "parent",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0134",
+  "args": [
+   "-s",
+   "{% set var = \"parent\" %}{% block main %}{% set var = \"inner\" %}{% endblock %}{{ var }}"
+  ],
+  "context": null,
+  "stdout": "parent",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0135",
+  "args": [
+   "-s",
+   "hello world {% include \"include.njk\" %}"
+  ],
+  "context": null,
+  "stdout": "hello world FooInclude ",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0136",
+  "args": [
+   "-s",
+   "{% include \"includeMany.njk\" %}"
+  ],
+  "context": null,
+  "stdout": "FooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \nFooInclude \n",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0137",
+  "args": [
+   "-s",
+   "hello world {% include \"include.njk\" %}"
+  ],
+  "context": "{\"name\":\"james\"}",
+  "stdout": "hello world FooInclude james",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0138",
+  "args": [
+   "-s",
+   "{% set var = 1 %}{% include \"include-set.njk\" %}{{ var }}"
+  ],
+  "context": null,
+  "stdout": "12\n1",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0139",
+  "args": [
+   "-s",
+   "hello world {% include tmpl %}"
+  ],
+  "context": "{\"name\":\"thedude\",\"tmpl\":\"include.njk\"}",
+  "stdout": "hello world FooInclude thedude",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0140",
+  "args": [
+   "-s",
+   "hello world {% set tmpl = \"include.njk\" %}{% include tmpl %}"
+  ],
+  "context": "{\"name\":\"thedude\"}",
+  "stdout": "hello world FooInclude thedude",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0141",
+  "args": [
+   "-s",
+   "hello world {% include data.tmpl %}"
+  ],
+  "context": "{\"name\":\"thedude\",\"data\":{\"tmpl\":\"include.njk\"}}",
+  "stdout": "hello world FooInclude thedude",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0142",
+  "args": [
+   "-s",
+   "hello world {% include \"missing.njk\" ignore missing %}"
+  ],
+  "context": null,
+  "stdout": "hello world ",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0143",
+  "args": [
+   "-s",
+   "hello world {% include \"missing.njk\" ignore missing %}"
+  ],
+  "context": "{\"name\":\"thedude\"}",
+  "stdout": "hello world ",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0144",
+  "args": [
+   "-s",
+   "{% for item in [1,2,3] %}{% include \"include-in-loop.njk\" %}{% endfor %}"
+  ],
+  "context": null,
+  "stdout": "1,0,true\n2,1,false\n3,2,false\n",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0145",
+  "args": [
+   "-s",
+   "{% for k,v in items %}{% include \"include-in-loop.njk\" %}{% endfor %}"
+  ],
+  "context": "{\"items\":{\"a\":\"A\",\"b\":\"B\"}}",
+  "stdout": "1,0,true\n2,1,false\n",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0146",
+  "args": [
+   "-s",
+   "{% for i in [1,2] %}{% for i in [3,4] %}{{ i }}{% endfor %}{{ i }}{% endfor %}"
+  ],
+  "context": null,
+  "stdout": "341342",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0147",
+  "args": [
+   "-s",
+   "{% extends \"base2.njk\" %}{% block item %}hello{{ item }}{% endblock %}"
+  ],
+  "context": null,
+  "stdout": "hello1hello2",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0148",
+  "args": [
+   "-s",
+   "{% for item in [1,2] %}{% include \"item.njk\" %}{% endfor %}"
+  ],
+  "context": null,
+  "stdout": "showing 1showing 2",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0149",
+  "args": [
+   "-s",
+   "{% set username = \"foo\" %}{{ username }}"
+  ],
+  "context": "{\"username\":\"james\"}",
+  "stdout": "foo",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0150",
+  "args": [
+   "-s",
+   "{% set x, y = \"foo\" %}{{ x }}{{ y }}"
+  ],
+  "context": null,
+  "stdout": "foofoo",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0151",
+  "args": [
+   "-s",
+   "{% set x = 1 + 2 %}{{ x }}"
+  ],
+  "context": null,
+  "stdout": "3",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0152",
+  "args": [
+   "-s",
+   "{% for i in [1] %}{% set foo=1 %}{% endfor %}{{ foo }}"
+  ],
+  "context": "{\"foo\":2}",
+  "stdout": "2",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0153",
+  "args": [
+   "-s",
+   "{% include \"set.njk\" %}{{ foo }}"
+  ],
+  "context": "{\"foo\":\"bar\"}",
+  "stdout": "bar",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0154",
+  "args": [
+   "-s",
+   "{% set username = username + \"pasta\" %}{{ username }}"
+  ],
+  "context": "{\"username\":\"basta\"}",
+  "stdout": "bastapasta",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0155",
+  "args": [
+   "-s",
+   "{% for i in [1] %}{% set val=5 %}{% endfor %}{{ val }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0156",
+  "args": [
+   "-s",
+   "{% for i in [1,2,3] %}{% if not val %}{% set val=5 %}{% endif %}{% set val=val+1 %}{{ val }}{% endfor %}afterwards: {{ val }}"
+  ],
+  "context": null,
+  "stdout": "678afterwards: ",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0157",
+  "args": [
+   "-s",
+   "{% set val=1 %}{% for i in [1] %}{% set val=5 %}{% endfor %}{{ val }}"
+  ],
+  "context": null,
+  "stdout": "5",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0158",
+  "args": [
+   "-s",
+   "{% set val=5 %}{% for i in [1,2,3] %}{% set val=val+1 %}{{ val }}{% endfor %}afterwards: {{ val }}"
+  ],
+  "context": null,
+  "stdout": "678afterwards: 8",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0159",
+  "args": [
+   "-s",
+   "{% set username = user.name %}{{ username }}"
+  ],
+  "context": "{\"user\":{\"name\":\"james\"}}",
+  "stdout": "james",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0160",
+  "args": [
+   "-s",
+   "{% set x = \"hello\" %}{% if false %}{% set x = \"world\" %}{% endif %}{{ x }}"
+  ],
+  "context": null,
+  "stdout": "hello",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0161",
+  "args": [
+   "-s",
+   "{% set x = \"blue\" %}{% if true %}{% set x = \"green\" %}{% endif %}{{ x }}"
+  ],
+  "context": null,
+  "stdout": "green",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0162",
+  "args": [
+   "-s",
+   "{% set block_content %}{% endset %}{{ block_content }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0163",
+  "args": [
+   "-s",
+   "{%- macro foo(bar) -%}{%- set test -%}foo{%- endset -%}{{ bar }}{{ test }}{%- endmacro -%}{{ foo(\"bar\") }}"
+  ],
+  "context": null,
+  "stdout": "barfoo",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0164",
+  "args": [
+   "-s",
+   "{% set block_content %}test string{% endset %}{{ block_content }}"
+  ],
+  "context": null,
+  "stdout": "test string",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0165",
+  "args": [
+   "-s",
+   "{% set block_content %}{% for item in [1, 2, 3] %}{% include \"item.njk\" %} {% endfor %}{% endset %}{{ block_content }}"
+  ],
+  "context": null,
+  "stdout": "showing 1 showing 2 showing 3 ",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0166",
+  "args": [
+   "-s",
+   "{% set block_content %}{% set inner_block_content %}{% for i in [1, 2, 3] %}item {{ i }} {% endfor %}{% endset %}{% for i in [1, 2, 3] %}inner {{i}}: \"{{ inner_block_content }}\" {% endfor %}{% endset %}{{ block_content | safe }}"
+  ],
+  "context": null,
+  "stdout": "inner 1: \"item 1 item 2 item 3 \" inner 2: \"item 1 item 2 item 3 \" inner 3: \"item 1 item 2 item 3 \" ",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0167",
+  "args": [
+   "-s",
+   "{% set x,y,z %}cool{% endset %}{{ x }} {{ y }} {{ z }}"
+  ],
+  "context": null,
+  "stdout": "cool cool cool",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0168",
+  "args": [
+   "-s",
+   "{% extends \"base-set-wraps-block.njk\" %}{% block somevar %}foo{% endblock %}"
+  ],
+  "context": null,
+  "stdout": "foo\n",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0169",
+  "args": [
+   "-s",
+   "{{ foo }}"
+  ],
+  "context": "{\"foo\":\"\\\"'<>&\"}",
+  "stdout": "&quot;&#39;&lt;&gt;&amp;",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0170",
+  "args": [
+   "-s",
+   "{{ foo|reverse }}"
+  ],
+  "context": "{\"foo\":\"\\\"'<>&\"}",
+  "stdout": "&amp;&gt;&lt;&#39;&quot;",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0171",
+  "args": [
+   "-s",
+   "{{ foo|reverse|safe }}"
+  ],
+  "context": "{\"foo\":\"\\\"'<>&\"}",
+  "stdout": "&><'\"",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0172",
+  "args": [
+   "-s",
+   "{{ foo }}"
+  ],
+  "context": "{\"foo\":null}",
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0173",
+  "args": [
+   "-s",
+   "{{ foo }}"
+  ],
+  "context": "{\"foo\":[\"<p>foo</p>\"]}",
+  "stdout": "&lt;p&gt;foo&lt;/p&gt;",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0174",
+  "args": [
+   "-s",
+   "{{ foo | safe }}"
+  ],
+  "context": "{\"foo\":null}",
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0175",
+  "args": [
+   "-s",
+   "{{ foo | safe }}"
+  ],
+  "context": "{\"foo\":\"<p>foo</p>\"}",
+  "stdout": "<p>foo</p>",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0176",
+  "args": [
+   "-s",
+   "{{ foo | safe }}"
+  ],
+  "context": "{\"foo\":[\"<p>foo</p>\"]}",
+  "stdout": "<p>foo</p>",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0177",
+  "args": [
+   "-s",
+   "{{ foo|safe }}"
+  ],
+  "context": "{\"foo\":\"\\\"'<>&\"}",
+  "stdout": "\"'<>&",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0178",
+  "args": [
+   "-s",
+   "{{ foo }}"
+  ],
+  "context": "{\"foo\":\"foo \\\\' bar\"}",
+  "stdout": "foo &#92;&#39; bar",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0179",
+  "args": [
+   "--no-autoescape",
+   "-s",
+   "{{ r/name [0-9] \\// }}"
+  ],
+  "context": "{}",
+  "stdout": "/name [0-9] \\//",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0180",
+  "args": [
+   "-s",
+   "{{ r/x/gi }}"
+  ],
+  "context": null,
+  "stdout": "/x/gi",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0181",
+  "args": [
+   "-s",
+   "{% if true -%}{{\"hello\"}} {{\"world\"}}{% endif %}"
+  ],
+  "context": null,
+  "stdout": "hello world",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0182",
+  "args": [
+   "-s",
+   "{% if true -%}{% if true %} {{\"hello\"}} {{\"world\"}}{% endif %}{% endif %}"
+  ],
+  "context": null,
+  "stdout": " hello world",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0183",
+  "args": [
+   "-s",
+   "{% if true -%}{# comment #} {{\"hello\"}}{% endif %}"
+  ],
+  "context": null,
+  "stdout": " hello",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0184",
+  "args": [
+   "-s",
+   "Well, {{- ' hello, ' -}} my friend"
+  ],
+  "context": null,
+  "stdout": "Well, hello, my friend",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0185",
+  "args": [
+   "-s",
+   " {{ 2 + 2 }} "
+  ],
+  "context": null,
+  "stdout": " 4 ",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0186",
+  "args": [
+   "-s",
+   " {{-2 + 2 }} "
+  ],
+  "context": null,
+  "stdout": "4 ",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0187",
+  "args": [
+   "-s",
+   " {{ -2 + 2 }} "
+  ],
+  "context": null,
+  "stdout": " 0 ",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0188",
+  "args": [
+   "-s",
+   " {{ 2 + 2 -}} "
+  ],
+  "context": null,
+  "stdout": " 4",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0189",
+  "args": [
+   "-s",
+   "{% for i in arr %}{{ i }}{% endfor %}"
+  ],
+  "context": "{\"arr\":[1,2,3,4,5]}",
+  "stdout": "12345",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0190",
+  "args": [
+   "-s",
+   "{% for i in arr %}{{ i }}{% else %}empty{% endfor %}"
+  ],
+  "context": "{\"arr\":[1,2,3,4,5]}",
+  "stdout": "12345",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0191",
+  "args": [
+   "-s",
+   "{% for i in arr %}{{ i }}{% else %}empty{% endfor %}"
+  ],
+  "context": "{\"arr\":[]}",
+  "stdout": "empty",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0192",
+  "args": [
+   "-s",
+   "{% for a, b, c in arr %}{{ a }},{{ b }},{{ c }}.{% endfor %}"
+  ],
+  "context": "{\"arr\":[[\"x\",\"y\",\"z\"],[\"1\",\"2\",\"3\"]]}",
+  "stdout": "x,y,z.1,2,3.",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0193",
+  "args": [
+   "-s",
+   "{% for k, v in { one: 1, two: 2 } %}-{{ k }}:{{ v }}-{% endfor %}"
+  ],
+  "context": null,
+  "stdout": "-one:1--two:2-",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0194",
+  "args": [
+   "-s",
+   "{% for i in [7,3,6] %}{{ loop.index }}{% endfor %}"
+  ],
+  "context": null,
+  "stdout": "123",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0195",
+  "args": [
+   "-s",
+   "{% for i in [7,3,6] %}{{ loop.index0 }}{% endfor %}"
+  ],
+  "context": null,
+  "stdout": "012",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0196",
+  "args": [
+   "-s",
+   "{% for i in [7,3,6] %}{{ loop.revindex }}{% endfor %}"
+  ],
+  "context": null,
+  "stdout": "321",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0197",
+  "args": [
+   "-s",
+   "{% for i in [7,3,6] %}{{ loop.revindex0 }}{% endfor %}"
+  ],
+  "context": null,
+  "stdout": "210",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0198",
+  "args": [
+   "-s",
+   "{% for i in [7,3,6] %}{% if loop.first %}{{ i }}{% endif %}{% endfor %}"
+  ],
+  "context": null,
+  "stdout": "7",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0199",
+  "args": [
+   "-s",
+   "{% for i in [7,3,6] %}{% if loop.last %}{{ i }}{% endif %}{% endfor %}"
+  ],
+  "context": null,
+  "stdout": "6",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0200",
+  "args": [
+   "-s",
+   "{% for i in [7,3,6] %}{{ loop.length }}{% endfor %}"
+  ],
+  "context": null,
+  "stdout": "333",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0201",
+  "args": [
+   "-s",
+   "{% for i in foo %}{{ i }}{% endfor %}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0202",
+  "args": [
+   "-s",
+   "{% for i in foo.bar %}{{ i }}{% endfor %}"
+  ],
+  "context": "{\"foo\":{}}",
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0203",
+  "args": [
+   "-s",
+   "{% for i in foo %}{{ i }}{% endfor %}"
+  ],
+  "context": "{\"foo\":null}",
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0204",
+  "args": [
+   "-s",
+   "{% for x, y in points %}[{{ x }},{{ y }}]{% endfor %}"
+  ],
+  "context": "{\"points\":[[1,2],[3,4],[5,6]]}",
+  "stdout": "[1,2][3,4][5,6]",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0205",
+  "args": [
+   "-s",
+   "{% for a, b, c, d in arr %}[{{ a }},{{ b }},{{ c }},{{ d }}]{% endfor%}"
+  ],
+  "context": "{\"arr\":[[1,2,3,4],[5,6,7,8]]}",
+  "stdout": "[1,2,3,4][5,6,7,8]",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0206",
+  "args": [
+   "-s",
+   "{% for x, y in points %}{{ loop.index }}{% endfor %}"
+  ],
+  "context": "{\"points\":[[1,2],[3,4],[5,6]]}",
+  "stdout": "123",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0207",
+  "args": [
+   "-s",
+   "{% for x, y in points %}{{ loop.revindex }}{% endfor %}"
+  ],
+  "context": "{\"points\":[[1,2],[3,4],[5,6]]}",
+  "stdout": "321",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0208",
+  "args": [
+   "-s",
+   "{% for k, v in items %}({{ k }},{{ v }}){% endfor %}"
+  ],
+  "context": "{\"items\":{\"foo\":1,\"bar\":2}}",
+  "stdout": "(foo,1)(bar,2)",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0209",
+  "args": [
+   "-s",
+   "{% for k, v in items %}{{ loop.index }}{% endfor %}"
+  ],
+  "context": "{\"items\":{\"foo\":1,\"bar\":2}}",
+  "stdout": "12",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0210",
+  "args": [
+   "-s",
+   "{% for k, v in items %}{{ loop.revindex }}{% endfor %}"
+  ],
+  "context": "{\"items\":{\"foo\":1,\"bar\":2}}",
+  "stdout": "21",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0211",
+  "args": [
+   "-s",
+   "{% for k, v in items %}{{ loop.length }}{% endfor %}"
+  ],
+  "context": "{\"items\":{\"foo\":1,\"bar\":2}}",
+  "stdout": "22",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0212",
+  "args": [
+   "-s",
+   "{% for item, v in items %}{% include \"item.njk\" %}{% endfor %}"
+  ],
+  "context": "{\"items\":{\"foo\":1,\"bar\":2}}",
+  "stdout": "showing fooshowing bar",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0213",
+  "args": [
+   "-s",
+   "{% set item = passed_var %}{% include \"item.njk\" %}\n{% for i in passed_iter %}{% set item = i %}{% include \"item.njk\" %}\n{% endfor %}"
+  ],
+  "context": "{\"passed_var\":\"test\",\"passed_iter\":[\"1\",\"2\",\"3\"]}",
+  "stdout": "showing test\nshowing 1\nshowing 2\nshowing 3\n",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0214",
+  "args": [
+   "-s",
+   "{% asyncEach i in arr %}{{ i }}{% endeach %}"
+  ],
+  "context": "{\"arr\":[1,2,3,4,5]}",
+  "stdout": "12345",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0215",
+  "args": [
+   "-s",
+   "{% asyncEach i in arr %}{{ i }}{% else %}empty{% endeach %}"
+  ],
+  "context": "{\"arr\":[1,2,3,4,5]}",
+  "stdout": "12345",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0216",
+  "args": [
+   "-s",
+   "{% asyncEach i in arr %}{{ i }}{% else %}empty{% endeach %}"
+  ],
+  "context": "{\"arr\":[]}",
+  "stdout": "empty",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0217",
+  "args": [
+   "-s",
+   "{% asyncEach a, b, c in arr %}{{ a }},{{ b }},{{ c }}.{% endeach %}"
+  ],
+  "context": "{\"arr\":[[\"x\",\"y\",\"z\"],[\"1\",\"2\",\"3\"]]}",
+  "stdout": "x,y,z.1,2,3.",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0218",
+  "args": [
+   "-s",
+   "{% asyncEach k, v in { one: 1, two: 2 } %}-{{ k }}:{{ v }}-{% endeach %}"
+  ],
+  "context": null,
+  "stdout": "-one:1--two:2-",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0219",
+  "args": [
+   "-s",
+   "{% asyncEach i in [7,3,6] %}{{ loop.index }}{% endeach %}"
+  ],
+  "context": null,
+  "stdout": "123",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0220",
+  "args": [
+   "-s",
+   "{% asyncEach i in [7,3,6] %}{{ loop.index0 }}{% endeach %}"
+  ],
+  "context": null,
+  "stdout": "012",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0221",
+  "args": [
+   "-s",
+   "{% asyncEach i in [7,3,6] %}{{ loop.revindex }}{% endeach %}"
+  ],
+  "context": null,
+  "stdout": "321",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0222",
+  "args": [
+   "-s",
+   "{% asyncEach i in [7,3,6] %}{{ loop.revindex0 }}{% endeach %}"
+  ],
+  "context": null,
+  "stdout": "210",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0223",
+  "args": [
+   "-s",
+   "{% asyncEach i in [7,3,6] %}{% if loop.first %}{{ i }}{% endif %}{% endeach %}"
+  ],
+  "context": null,
+  "stdout": "7",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0224",
+  "args": [
+   "-s",
+   "{% asyncEach i in [7,3,6] %}{% if loop.last %}{{ i }}{% endif %}{% endeach %}"
+  ],
+  "context": null,
+  "stdout": "6",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0225",
+  "args": [
+   "-s",
+   "{% asyncEach i in [7,3,6] %}{{ loop.length }}{% endeach %}"
+  ],
+  "context": null,
+  "stdout": "333",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0226",
+  "args": [
+   "-s",
+   "{% asyncEach i in foo %}{{ i }}{% endeach %}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0227",
+  "args": [
+   "-s",
+   "{% asyncEach i in foo.bar %}{{ i }}{% endeach %}"
+  ],
+  "context": "{\"foo\":{}}",
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0228",
+  "args": [
+   "-s",
+   "{% asyncEach i in foo %}{{ i }}{% endeach %}"
+  ],
+  "context": "{\"foo\":null}",
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0229",
+  "args": [
+   "-s",
+   "{% asyncEach x, y in points %}[{{ x }},{{ y }}]{% endeach %}"
+  ],
+  "context": "{\"points\":[[1,2],[3,4],[5,6]]}",
+  "stdout": "[1,2][3,4][5,6]",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0230",
+  "args": [
+   "-s",
+   "{% asyncEach a, b, c, d in arr %}[{{ a }},{{ b }},{{ c }},{{ d }}]{% endeach%}"
+  ],
+  "context": "{\"arr\":[[1,2,3,4],[5,6,7,8]]}",
+  "stdout": "[1,2,3,4][5,6,7,8]",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0231",
+  "args": [
+   "-s",
+   "{% asyncEach x, y in points %}{{ loop.index }}{% endeach %}"
+  ],
+  "context": "{\"points\":[[1,2],[3,4],[5,6]]}",
+  "stdout": "123",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0232",
+  "args": [
+   "-s",
+   "{% asyncEach x, y in points %}{{ loop.revindex }}{% endeach %}"
+  ],
+  "context": "{\"points\":[[1,2],[3,4],[5,6]]}",
+  "stdout": "321",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0233",
+  "args": [
+   "-s",
+   "{% asyncEach k, v in items %}({{ k }},{{ v }}){% endeach %}"
+  ],
+  "context": "{\"items\":{\"foo\":1,\"bar\":2}}",
+  "stdout": "(foo,1)(bar,2)",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0234",
+  "args": [
+   "-s",
+   "{% asyncEach k, v in items %}{{ loop.index }}{% endeach %}"
+  ],
+  "context": "{\"items\":{\"foo\":1,\"bar\":2}}",
+  "stdout": "12",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0235",
+  "args": [
+   "-s",
+   "{% asyncEach k, v in items %}{{ loop.revindex }}{% endeach %}"
+  ],
+  "context": "{\"items\":{\"foo\":1,\"bar\":2}}",
+  "stdout": "21",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0236",
+  "args": [
+   "-s",
+   "{% asyncEach k, v in items %}{{ loop.length }}{% endeach %}"
+  ],
+  "context": "{\"items\":{\"foo\":1,\"bar\":2}}",
+  "stdout": "22",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0237",
+  "args": [
+   "-s",
+   "{% asyncEach item, v in items %}{% include \"item.njk\" %}{% endeach %}"
+  ],
+  "context": "{\"items\":{\"foo\":1,\"bar\":2}}",
+  "stdout": "showing fooshowing bar",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0238",
+  "args": [
+   "-s",
+   "{% set item = passed_var %}{% include \"item.njk\" %}\n{% asyncEach i in passed_iter %}{% set item = i %}{% include \"item.njk\" %}\n{% endeach %}"
+  ],
+  "context": "{\"passed_var\":\"test\",\"passed_iter\":[\"1\",\"2\",\"3\"]}",
+  "stdout": "showing test\nshowing 1\nshowing 2\nshowing 3\n",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0239",
+  "args": [
+   "-s",
+   "{% asyncAll i in arr %}{{ i }}{% endall %}"
+  ],
+  "context": "{\"arr\":[1,2,3,4,5]}",
+  "stdout": "12345",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0240",
+  "args": [
+   "-s",
+   "{% asyncAll i in arr %}{{ i }}{% else %}empty{% endall %}"
+  ],
+  "context": "{\"arr\":[1,2,3,4,5]}",
+  "stdout": "12345",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0241",
+  "args": [
+   "-s",
+   "{% asyncAll i in arr %}{{ i }}{% else %}empty{% endall %}"
+  ],
+  "context": "{\"arr\":[]}",
+  "stdout": "empty",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0242",
+  "args": [
+   "-s",
+   "{% asyncAll a, b, c in arr %}{{ a }},{{ b }},{{ c }}.{% endall %}"
+  ],
+  "context": "{\"arr\":[[\"x\",\"y\",\"z\"],[\"1\",\"2\",\"3\"]]}",
+  "stdout": "x,y,z.1,2,3.",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0243",
+  "args": [
+   "-s",
+   "{% asyncAll k, v in { one: 1, two: 2 } %}-{{ k }}:{{ v }}-{% endall %}"
+  ],
+  "context": null,
+  "stdout": "-one:1--two:2-",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0244",
+  "args": [
+   "-s",
+   "{% asyncAll i in [7,3,6] %}{{ loop.index }}{% endall %}"
+  ],
+  "context": null,
+  "stdout": "123",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0245",
+  "args": [
+   "-s",
+   "{% asyncAll i in [7,3,6] %}{{ loop.index0 }}{% endall %}"
+  ],
+  "context": null,
+  "stdout": "012",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0246",
+  "args": [
+   "-s",
+   "{% asyncAll i in [7,3,6] %}{{ loop.revindex }}{% endall %}"
+  ],
+  "context": null,
+  "stdout": "321",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0247",
+  "args": [
+   "-s",
+   "{% asyncAll i in [7,3,6] %}{{ loop.revindex0 }}{% endall %}"
+  ],
+  "context": null,
+  "stdout": "210",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0248",
+  "args": [
+   "-s",
+   "{% asyncAll i in [7,3,6] %}{% if loop.first %}{{ i }}{% endif %}{% endall %}"
+  ],
+  "context": null,
+  "stdout": "7",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0249",
+  "args": [
+   "-s",
+   "{% asyncAll i in [7,3,6] %}{% if loop.last %}{{ i }}{% endif %}{% endall %}"
+  ],
+  "context": null,
+  "stdout": "6",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0250",
+  "args": [
+   "-s",
+   "{% asyncAll i in [7,3,6] %}{{ loop.length }}{% endall %}"
+  ],
+  "context": null,
+  "stdout": "333",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0251",
+  "args": [
+   "-s",
+   "{% asyncAll i in foo %}{{ i }}{% endall %}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0252",
+  "args": [
+   "-s",
+   "{% asyncAll i in foo.bar %}{{ i }}{% endall %}"
+  ],
+  "context": "{\"foo\":{}}",
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0253",
+  "args": [
+   "-s",
+   "{% asyncAll i in foo %}{{ i }}{% endall %}"
+  ],
+  "context": "{\"foo\":null}",
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0254",
+  "args": [
+   "-s",
+   "{% asyncAll x, y in points %}[{{ x }},{{ y }}]{% endall %}"
+  ],
+  "context": "{\"points\":[[1,2],[3,4],[5,6]]}",
+  "stdout": "[1,2][3,4][5,6]",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0255",
+  "args": [
+   "-s",
+   "{% asyncAll a, b, c, d in arr %}[{{ a }},{{ b }},{{ c }},{{ d }}]{% endall%}"
+  ],
+  "context": "{\"arr\":[[1,2,3,4],[5,6,7,8]]}",
+  "stdout": "[1,2,3,4][5,6,7,8]",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0256",
+  "args": [
+   "-s",
+   "{% asyncAll x, y in points %}{{ loop.index }}{% endall %}"
+  ],
+  "context": "{\"points\":[[1,2],[3,4],[5,6]]}",
+  "stdout": "123",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0257",
+  "args": [
+   "-s",
+   "{% asyncAll x, y in points %}{{ loop.revindex }}{% endall %}"
+  ],
+  "context": "{\"points\":[[1,2],[3,4],[5,6]]}",
+  "stdout": "321",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0258",
+  "args": [
+   "-s",
+   "{% asyncAll k, v in items %}({{ k }},{{ v }}){% endall %}"
+  ],
+  "context": "{\"items\":{\"foo\":1,\"bar\":2}}",
+  "stdout": "(foo,1)(bar,2)",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0259",
+  "args": [
+   "-s",
+   "{% asyncAll k, v in items %}{{ loop.index }}{% endall %}"
+  ],
+  "context": "{\"items\":{\"foo\":1,\"bar\":2}}",
+  "stdout": "12",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0260",
+  "args": [
+   "-s",
+   "{% asyncAll k, v in items %}{{ loop.revindex }}{% endall %}"
+  ],
+  "context": "{\"items\":{\"foo\":1,\"bar\":2}}",
+  "stdout": "21",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0261",
+  "args": [
+   "-s",
+   "{% asyncAll k, v in items %}{{ loop.length }}{% endall %}"
+  ],
+  "context": "{\"items\":{\"foo\":1,\"bar\":2}}",
+  "stdout": "22",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0262",
+  "args": [
+   "-s",
+   "{% asyncAll item, v in items %}{% include \"item.njk\" %}{% endall %}"
+  ],
+  "context": "{\"items\":{\"foo\":1,\"bar\":2}}",
+  "stdout": "showing fooshowing bar",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0263",
+  "args": [
+   "-s",
+   "{% set item = passed_var %}{% include \"item.njk\" %}\n{% asyncAll i in passed_iter %}{% set item = i %}{% include \"item.njk\" %}\n{% endall %}"
+  ],
+  "context": "{\"passed_var\":\"test\",\"passed_iter\":[\"1\",\"2\",\"3\"]}",
+  "stdout": "showing test\nshowing 1\nshowing 2\nshowing 3\n",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0264",
+  "args": [
+   "-s",
+   "{% filter title %}may the force be with you{% endfilter %}"
+  ],
+  "context": null,
+  "stdout": "May The Force Be With You",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0265",
+  "args": [
+   "-s",
+   "{% filter replace(\"force\", \"forth\") %}may the force be with you{% endfilter %}"
+  ],
+  "context": null,
+  "stdout": "may the forth be with you",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0266",
+  "args": [
+   "-s",
+   "{% set foo = \"force\" %}{% filter replace(\"force\", \"forth\") %}may the {{ foo }} be with you{% endfilter %}"
+  ],
+  "context": null,
+  "stdout": "may the forth be with you",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0267",
+  "args": [
+   "-s",
+   "{% extends \"filter-block.html\" %}{% block block1 %}force{% endblock %}"
+  ],
+  "context": null,
+  "stdout": "may the forth be with you\n",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0268",
+  "args": [
+   "-s",
+   "{{ -3|abs }}"
+  ],
+  "context": null,
+  "stdout": "3",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0269",
+  "args": [
+   "-s",
+   "{{ -3.456|abs }}"
+  ],
+  "context": null,
+  "stdout": "3.456",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0270",
+  "args": [
+   "-s",
+   "{% for a in [1,2,3,4,5,6]|batch(2) %}-{% for b in a %}{{ b }}{% endfor %}-{% endfor %}"
+  ],
+  "context": null,
+  "stdout": "-12--34--56-",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0271",
+  "args": [
+   "-s",
+   "{{ \"foo\" | capitalize }}"
+  ],
+  "context": null,
+  "stdout": "Foo",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0272",
+  "args": [
+   "-s",
+   "{{ undefined | capitalize }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0273",
+  "args": [
+   "-s",
+   "{{ null | capitalize }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0274",
+  "args": [
+   "-s",
+   "{{ nothing | capitalize }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0275",
+  "args": [
+   "-s",
+   "{{ \"fooo\" | center }}"
+  ],
+  "context": null,
+  "stdout": "                                      fooo                                      ",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0276",
+  "args": [
+   "-s",
+   "{{ undefined | center }}"
+  ],
+  "context": null,
+  "stdout": "                                                                                ",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0277",
+  "args": [
+   "-s",
+   "{{ null | center }}"
+  ],
+  "context": null,
+  "stdout": "                                                                                ",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0278",
+  "args": [
+   "-s",
+   "{{ nothing | center }}"
+  ],
+  "context": null,
+  "stdout": "                                                                                ",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0279",
+  "args": [
+   "-s",
+   "{{ \"foo\" | center }}"
+  ],
+  "context": null,
+  "stdout": "                                      foo                                       ",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0280",
+  "args": [
+   "-s",
+   "{{ undefined | default(\"foo\") }}"
+  ],
+  "context": null,
+  "stdout": "foo",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0281",
+  "args": [
+   "-s",
+   "{{ bar | default(\"foo\") }}"
+  ],
+  "context": "{\"bar\":null}",
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0282",
+  "args": [
+   "-s",
+   "{{ false | default(\"foo\") }}"
+  ],
+  "context": null,
+  "stdout": "false",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0283",
+  "args": [
+   "-s",
+   "{{ false | default(\"foo\", true) }}"
+  ],
+  "context": null,
+  "stdout": "foo",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0284",
+  "args": [
+   "-s",
+   "{{ bar | default(\"foo\") }}"
+  ],
+  "context": null,
+  "stdout": "foo",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0285",
+  "args": [
+   "-s",
+   "{{ \"bar\" | default(\"foo\") }}"
+  ],
+  "context": null,
+  "stdout": "bar",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0286",
+  "args": [
+   "-s",
+   "{{ ['a', 1, {b: true}] | dump  }}"
+  ],
+  "context": null,
+  "stdout": "[&quot;a&quot;,1,{&quot;b&quot;:true}]",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0287",
+  "args": [
+   "-s",
+   "{{ ['a', 1, {b: true}] | dump(2) }}"
+  ],
+  "context": null,
+  "stdout": "[\n  &quot;a&quot;,\n  1,\n  {\n    &quot;b&quot;: true\n  }\n]",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0288",
+  "args": [
+   "-s",
+   "{{ ['a', 1, {b: true}] | dump(4) }}"
+  ],
+  "context": null,
+  "stdout": "[\n    &quot;a&quot;,\n    1,\n    {\n        &quot;b&quot;: true\n    }\n]",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0289",
+  "args": [
+   "-s",
+   "{{ ['a', 1, {b: true}] | dump('\t') }}"
+  ],
+  "context": null,
+  "stdout": "[\n\t&quot;a&quot;,\n\t1,\n\t{\n\t\t&quot;b&quot;: true\n\t}\n]",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0290",
+  "args": [
+   "--no-autoescape",
+   "-s",
+   "{{ \"<html>\\\\\" | escape }}"
+  ],
+  "context": "{}",
+  "stdout": "&lt;html&gt;&#92;",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0291",
+  "args": [
+   "--no-autoescape",
+   "-s",
+   "{{ \"<html>\" | safe | escape }}"
+  ],
+  "context": "{}",
+  "stdout": "<html>",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0292",
+  "args": [
+   "--no-autoescape",
+   "-s",
+   "{{ \"<html>\" | escape | escape }}"
+  ],
+  "context": "{}",
+  "stdout": "&lt;html&gt;",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0293",
+  "args": [
+   "-s",
+   "{% set val = \"<html>\" | escape %}{{ val }}"
+  ],
+  "context": "{}",
+  "stdout": "&lt;html&gt;",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0294",
+  "args": [
+   "--no-autoescape",
+   "-s",
+   "{{ foo | escape }}"
+  ],
+  "context": "{\"foo\":[\"<html>\"]}",
+  "stdout": "&lt;html&gt;",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0295",
+  "args": [
+   "--no-autoescape",
+   "-s",
+   "{{ foo | escape }}"
+  ],
+  "context": "{\"foo\":null}",
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0296",
+  "args": [
+   "-s",
+   "{{ \"<html>\" | safe | escape }}"
+  ],
+  "context": "{}",
+  "stdout": "<html>",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0297",
+  "args": [
+   "-s",
+   "{% set val = \"<html>\" | safe | e %}{{ val }}"
+  ],
+  "context": "{}",
+  "stdout": "<html>",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0298",
+  "args": [
+   "--no-autoescape",
+   "-s",
+   "{% set val = \"<html>\" | e | safe %}{{ val }}"
+  ],
+  "context": "{}",
+  "stdout": "&lt;html&gt;",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0299",
+  "args": [
+   "-s",
+   "{% for item in items | dictsort %}{{ item[0] }}{% endfor %}"
+  ],
+  "context": "{\"items\":{\"e\":1,\"d\":2,\"c\":3,\"a\":4,\"f\":5,\"b\":6}}",
+  "stdout": "abcdef",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0300",
+  "args": [
+   "-s",
+   "{% for item in items | dictsort(true) %}{{ item[0] }},{% endfor %}"
+  ],
+  "context": "{\"items\":{\"ABC\":6,\"ABc\":5,\"Abc\":1,\"abc\":2}}",
+  "stdout": "ABC,ABc,Abc,abc,",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0301",
+  "args": [
+   "-s",
+   "{% for item in items | dictsort(false, \"value\") %}{{ item[0] }}{% endfor %}"
+  ],
+  "context": "{\"items\":{\"a\":6,\"b\":5,\"c\":1,\"d\":2}}",
+  "stdout": "cdba",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0302",
+  "args": [
+   "-s",
+   "{{ [1,2,3] | first }}"
+  ],
+  "context": null,
+  "stdout": "1",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0303",
+  "args": [
+   "-s",
+   "{{ \"3.5\" | float }}"
+  ],
+  "context": null,
+  "stdout": "3.5",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0304",
+  "args": [
+   "-s",
+   "{{ \"0\" | float }}"
+  ],
+  "context": null,
+  "stdout": "0",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0305",
+  "args": [
+   "-s",
+   "{{ \"<html>\" | safe | forceescape }}"
+  ],
+  "context": null,
+  "stdout": "&lt;html&gt;",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0306",
+  "args": [
+   "-s",
+   "{{ \"3.5\" | int }}"
+  ],
+  "context": null,
+  "stdout": "3",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0307",
+  "args": [
+   "-s",
+   "{{ \"0\" | int }}"
+  ],
+  "context": null,
+  "stdout": "0",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0308",
+  "args": [
+   "-s",
+   "{{ \"foobar\" | int(\"42\") }}"
+  ],
+  "context": null,
+  "stdout": "42",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0309",
+  "args": [
+   "-s",
+   "{{ \"0x4d32\" | int(base=16) }}"
+  ],
+  "context": null,
+  "stdout": "19762",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0310",
+  "args": [
+   "-s",
+   "{{ \"011\" | int(base=8) }}"
+  ],
+  "context": null,
+  "stdout": "9",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0311",
+  "args": [
+   "-s",
+   "{{ \"bob\" | int(\"cat\") }}"
+  ],
+  "context": null,
+  "stdout": "cat",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0312",
+  "args": [
+   "-s",
+   "{{ \"bob\" | float(\"cat\") }}"
+  ],
+  "context": null,
+  "stdout": "cat",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0313",
+  "args": [
+   "-s",
+   "{% for type, items in items | groupby(\"type\") %}:{{ type }}:{% for item in items %}{{ item.name }}{% endfor %}{% endfor %}"
+  ],
+  "context": "{\"items\":[{\"name\":\"james\",\"type\":\"green\"},{\"name\":\"john\",\"type\":\"blue\"},{\"name\":\"jim\",\"type\":\"blue\"},{\"name\":\"jessie\",\"type\":\"green\"}]}",
+  "stdout": ":green:jamesjessie:blue:johnjim",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0314",
+  "args": [
+   "-s",
+   "{% for type, items in items | groupby(\"type\") %}:{{ type }}:{% for item in items %}{{ item.name }}{% endfor %}{% endfor %}"
+  ],
+  "context": "{\"items\":[{\"name\":\"james\",\"type\":\"green\"},{\"name\":\"john\",\"type\":\"blue\"},{\"name\":\"jim\",\"type\":\"blue\"},{\"name\":\"jessie\",\"color\":\"green\"}]}",
+  "stdout": ":green:james:blue:johnjim:undefined:jessie",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0315",
+  "args": [
+   "-s",
+   "{% for year, posts in posts | groupby(\"date.year\") %}:{{ year }}:{% for post in posts %}{{ post.title }}{% endfor %}{% endfor %}"
+  ],
+  "context": "{\"posts\":[{\"date\":{\"year\":2019},\"title\":\"Post 1\"},{\"date\":{\"year\":2018},\"title\":\"Post 2\"},{\"date\":{\"year\":2019},\"title\":\"Post 3\"}]}",
+  "stdout": ":2018:Post 2:2019:Post 1Post 3",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0316",
+  "args": [
+   "-s",
+   "{% for year, posts in posts | groupby(\"date.year\") %}:{{ year }}:{% for post in posts %}{{ post.title }}{% endfor %}{% endfor %}"
+  ],
+  "context": "{\"posts\":[{\"date\":{\"year\":2019},\"title\":\"Post 1\"},{\"date\":{\"year\":2018},\"title\":\"Post 2\"},{\"meta\":{\"month\":2},\"title\":\"Post 3\"}]}",
+  "stdout": ":2018:Post 2:2019:Post 1:undefined:Post 3",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0317",
+  "args": [
+   "-s",
+   "{% for type, items in items | groupby({}) %}:{{ type }}:{% for item in items %}{{ item.name }}{% endfor %}{% endfor %}"
+  ],
+  "context": "{\"items\":[{\"name\":\"james\",\"type\":\"green\"},{\"name\":\"john\",\"type\":\"blue\"},{\"name\":\"jim\",\"type\":\"blue\"},{\"name\":\"jessie\",\"type\":\"green\"}]}",
+  "stdout": ":undefined:jamesjohnjimjessie",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0318",
+  "args": [
+   "-s",
+   "{% for type, items in items | groupby(\"a.b.c\") %}:{{ type }}:{% for item in items %}{{ item.name }}{% endfor %}{% endfor %}"
+  ],
+  "context": "{\"items\":[{\"name\":\"james\",\"type\":\"green\"},{\"name\":\"john\",\"type\":\"blue\"},{\"name\":\"jim\",\"type\":\"blue\"},{\"name\":\"jessie\",\"type\":\"green\"}]}",
+  "stdout": ":undefined:jamesjohnjimjessie",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0319",
+  "args": [
+   "--throw-on-undefined",
+   "-s",
+   "{% for type, items in items | groupby(\"a.b.c\") %}:{{ type }}:{% for item in items %}{{ item.name }}{% endfor %}{% endfor %}"
+  ],
+  "context": "{\"items\":[{\"name\":\"james\",\"type\":\"green\"},{\"name\":\"john\",\"type\":\"blue\"},{\"name\":\"jim\",\"type\":\"blue\"},{\"name\":\"jessie\",\"type\":\"green\"}]}",
+  "stdout": "",
+  "stderr": "Template render error: (unknown path)\n  TypeError: groupby: attribute \"a.b.c\" resolved to undefined\n",
+  "code": 1
+ },
+ {
+  "name": "up0320",
+  "args": [
+   "-s",
+   "{{ \"one\ntwo\nthree\" | indent }}"
+  ],
+  "context": null,
+  "stdout": "one\n    two\n    three",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0321",
+  "args": [
+   "-s",
+   "{{ \"one\ntwo\nthree\" | indent(2) }}"
+  ],
+  "context": null,
+  "stdout": "one\n  two\n  three",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0322",
+  "args": [
+   "-s",
+   "{{ \"one\ntwo\nthree\" | indent(2, true) }}"
+  ],
+  "context": null,
+  "stdout": "  one\n  two\n  three",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0323",
+  "args": [
+   "-s",
+   "{{ \"\" | indent }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0324",
+  "args": [
+   "-s",
+   "{{ undefined | indent }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0325",
+  "args": [
+   "-s",
+   "{{ undefined | indent(2) }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0326",
+  "args": [
+   "-s",
+   "{{ undefined | indent(2, true) }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0327",
+  "args": [
+   "-s",
+   "{{ null | indent }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0328",
+  "args": [
+   "-s",
+   "{{ null | indent(2) }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0329",
+  "args": [
+   "-s",
+   "{{ null | indent(2, true) }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0330",
+  "args": [
+   "-s",
+   "{{ nothing | indent }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0331",
+  "args": [
+   "-s",
+   "{{ nothing | indent(2) }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0332",
+  "args": [
+   "-s",
+   "{{ nothing | indent(2, true) }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0333",
+  "args": [
+   "-s",
+   "{{ items | join }}"
+  ],
+  "context": "{\"items\":[1,2,3]}",
+  "stdout": "123",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0334",
+  "args": [
+   "-s",
+   "{{ items | join(\",\") }}"
+  ],
+  "context": "{\"items\":[\"foo\",\"bar\",\"bear\"]}",
+  "stdout": "foo,bar,bear",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0335",
+  "args": [
+   "-s",
+   "{{ items | join(\",\", \"name\") }}"
+  ],
+  "context": "{\"items\":[{\"name\":\"foo\"},{\"name\":\"bar\"},{\"name\":\"bear\"}]}",
+  "stdout": "foo,bar,bear",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0336",
+  "args": [
+   "-s",
+   "{{ [1,2,3] | last }}"
+  ],
+  "context": null,
+  "stdout": "3",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0337",
+  "args": [
+   "-s",
+   "{% for i in \"foobar\" | list %}{{ i }},{% endfor %}"
+  ],
+  "context": null,
+  "stdout": "f,o,o,b,a,r,",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0338",
+  "args": [
+   "-s",
+   "{% for pair in person | list %}{{ pair.key }}: {{ pair.value }} - {% endfor %}"
+  ],
+  "context": "{\"person\":{\"name\":\"Joe\",\"age\":83}}",
+  "stdout": "name: Joe - age: 83 - ",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0339",
+  "args": [
+   "-s",
+   "{% for i in [1, 2] | list %}{{ i }}{% endfor %}"
+  ],
+  "context": null,
+  "stdout": "12",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0340",
+  "args": [
+   "-s",
+   "{{ \"fOObAr\" | lower }}"
+  ],
+  "context": null,
+  "stdout": "foobar",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0341",
+  "args": [
+   "-s",
+   "{{ null | lower }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0342",
+  "args": [
+   "-s",
+   "{{ undefined | lower }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0343",
+  "args": [
+   "-s",
+   "{{ nothing | lower }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0344",
+  "args": [
+   "-s",
+   "{{ null | nl2br }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0345",
+  "args": [
+   "-s",
+   "{{ undefined | nl2br }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0346",
+  "args": [
+   "-s",
+   "{{ nothing | nl2br }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0347",
+  "args": [
+   "-s",
+   "{{ \"foo\nbar\" | nl2br }}"
+  ],
+  "context": null,
+  "stdout": "foo&lt;br /&gt;\nbar",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0348",
+  "args": [
+   "-s",
+   "{{ numbers | reject(\"odd\") | join }}"
+  ],
+  "context": "{\"numbers\":[0,1,2,3,4,5]}",
+  "stdout": "024",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0349",
+  "args": [
+   "-s",
+   "{{ numbers | reject(\"even\") | join }}"
+  ],
+  "context": "{\"numbers\":[0,1,2,3,4,5]}",
+  "stdout": "135",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0350",
+  "args": [
+   "-s",
+   "{{ numbers | reject(\"divisibleby\", 3) | join }}"
+  ],
+  "context": "{\"numbers\":[0,1,2,3,4,5]}",
+  "stdout": "1245",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0351",
+  "args": [
+   "-s",
+   "{{ numbers | reject() | join }}"
+  ],
+  "context": "{\"numbers\":[0,1,2,3,4,5]}",
+  "stdout": "0",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0352",
+  "args": [
+   "-s",
+   "{{ foods | rejectattr(\"tasty\") | length }}"
+  ],
+  "context": "{\"foods\":[{\"tasty\":true},{\"tasty\":false},{\"tasty\":true}]}",
+  "stdout": "1",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0353",
+  "args": [
+   "-s",
+   "{{ numbers | select(\"odd\") | join }}"
+  ],
+  "context": "{\"numbers\":[0,1,2,3,4,5]}",
+  "stdout": "135",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0354",
+  "args": [
+   "-s",
+   "{{ numbers | select(\"even\") | join }}"
+  ],
+  "context": "{\"numbers\":[0,1,2,3,4,5]}",
+  "stdout": "024",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0355",
+  "args": [
+   "-s",
+   "{{ numbers | select(\"divisibleby\", 3) | join }}"
+  ],
+  "context": "{\"numbers\":[0,1,2,3,4,5]}",
+  "stdout": "03",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0356",
+  "args": [
+   "-s",
+   "{{ numbers | select() | join }}"
+  ],
+  "context": "{\"numbers\":[0,1,2,3,4,5]}",
+  "stdout": "12345",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0357",
+  "args": [
+   "-s",
+   "{{ foods | selectattr(\"tasty\") | length }}"
+  ],
+  "context": "{\"foods\":[{\"tasty\":true},{\"tasty\":false},{\"tasty\":true}]}",
+  "stdout": "2",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0358",
+  "args": [
+   "-s",
+   "{{ 123456 | replace(\"4\", \".\") }}"
+  ],
+  "context": null,
+  "stdout": "123.56",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0359",
+  "args": [
+   "-s",
+   "{{ 12345.6 | replace(\"4\", \".\") }}"
+  ],
+  "context": null,
+  "stdout": "123.5.6",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0360",
+  "args": [
+   "-s",
+   "{{ 12345.6 | replace(4, \".\") }}"
+  ],
+  "context": null,
+  "stdout": "123.5.6",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0361",
+  "args": [
+   "-s",
+   "{{ 12345.6 | replace(\"4\", \"7\") }}"
+  ],
+  "context": null,
+  "stdout": "12375.6",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0362",
+  "args": [
+   "-s",
+   "{{ 12345.6 | replace(4, 7) }}"
+  ],
+  "context": null,
+  "stdout": "12375.6",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0363",
+  "args": [
+   "-s",
+   "{{ 123450.6 | replace(0, 7) }}"
+  ],
+  "context": null,
+  "stdout": "123457.6",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0364",
+  "args": [
+   "-s",
+   "{{ \"aaabbbccc\" | replace(\"\", \".\") }}"
+  ],
+  "context": null,
+  "stdout": ".a.a.a.b.b.b.c.c.c.",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0365",
+  "args": [
+   "-s",
+   "{{ \"aaabbbccc\" | replace(null, \".\") }}"
+  ],
+  "context": null,
+  "stdout": "aaabbbccc",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0366",
+  "args": [
+   "-s",
+   "{{ \"aaabbbccc\" | replace(undefined, \".\") }}"
+  ],
+  "context": null,
+  "stdout": "aaabbbccc",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0367",
+  "args": [
+   "-s",
+   "{{ \"aaabbbccc\" | replace({}, \".\") }}"
+  ],
+  "context": null,
+  "stdout": "aaabbbccc",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0368",
+  "args": [
+   "-s",
+   "{{ \"aaabbbccc\" | replace(true, \".\") }}"
+  ],
+  "context": null,
+  "stdout": "aaabbbccc",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0369",
+  "args": [
+   "-s",
+   "{{ \"aaabbbccc\" | replace(false, \".\") }}"
+  ],
+  "context": null,
+  "stdout": "aaabbbccc",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0370",
+  "args": [
+   "-s",
+   "{{ \"aaabbbccc\" | replace([\"wrong\"], \".\") }}"
+  ],
+  "context": null,
+  "stdout": "aaabbbccc",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0371",
+  "args": [
+   "-s",
+   "{{ \"aaabbbccc\" | replace(\"a\", \"x\") }}"
+  ],
+  "context": null,
+  "stdout": "xxxbbbccc",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0372",
+  "args": [
+   "-s",
+   "{{ \"aaabbbccc\" | replace(\"a\", \"x\", 2) }}"
+  ],
+  "context": null,
+  "stdout": "xxabbbccc",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0373",
+  "args": [
+   "-s",
+   "{{ \"aaabbbbbccc\" | replace(\"b\", \"y\", 4) }}"
+  ],
+  "context": null,
+  "stdout": "aaayyyybccc",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0374",
+  "args": [
+   "-s",
+   "{{ \"aaabbbbbccc\" | replace(\"\", \"\") }}"
+  ],
+  "context": null,
+  "stdout": "aaabbbbbccc",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0375",
+  "args": [
+   "-s",
+   "{{ \"aaabbbbbccc\" | replace(\"b\", \"\") }}"
+  ],
+  "context": null,
+  "stdout": "aaaccc",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0376",
+  "args": [
+   "-s",
+   "{{ \"aaabbbbbccc\" | replace(\"b\", \"\", 4) }}"
+  ],
+  "context": null,
+  "stdout": "aaabccc",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0377",
+  "args": [
+   "-s",
+   "{{ \"aaabbbbbccc\" | replace(\"ab\", \"y\", 4) }}"
+  ],
+  "context": null,
+  "stdout": "aaybbbbccc",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0378",
+  "args": [
+   "-s",
+   "{{ \"aaabbbbbccc\" | replace(\"d\", \"y\", 4) }}"
+  ],
+  "context": null,
+  "stdout": "aaabbbbbccc",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0379",
+  "args": [
+   "-s",
+   "{{ \"aaabbcccbbb\" | replace(\"b\", \"y\", 4) }}"
+  ],
+  "context": null,
+  "stdout": "aaayycccyyb",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0380",
+  "args": [
+   "-s",
+   "{{ undefined | replace(\"b\", \"y\", 4) }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0381",
+  "args": [
+   "-s",
+   "{{ null | replace(\"b\", \"y\", 4) }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0382",
+  "args": [
+   "-s",
+   "{{ {} | replace(\"b\", \"y\", 4) }}"
+  ],
+  "context": null,
+  "stdout": "[object Object]",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0383",
+  "args": [
+   "-s",
+   "{{ [] | replace(\"b\", \"y\", 4) }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0384",
+  "args": [
+   "-s",
+   "{{ true | replace(\"rue\", \"afafasf\", 4) }}"
+  ],
+  "context": null,
+  "stdout": "true",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0385",
+  "args": [
+   "-s",
+   "{{ false | replace(\"rue\", \"afafasf\", 4) }}"
+  ],
+  "context": null,
+  "stdout": "false",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0386",
+  "args": [
+   "-s",
+   "{{ \"<img src=\" | replace(\"<img\", \"<img alt=val\") | safe }}"
+  ],
+  "context": null,
+  "stdout": "<img alt=val src=",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0387",
+  "args": [
+   "-s",
+   "{{ \"<img src=\\\"http://www.example.com\\\" />\" | replace(\"<img\", \"replacement text\") | safe }}"
+  ],
+  "context": null,
+  "stdout": "replacement text src=\"http://www.example.com\" />",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0388",
+  "args": [
+   "-s",
+   "{{ \"aabbbb\" | replace(r/ab{2}/, \"z\") }}"
+  ],
+  "context": null,
+  "stdout": "azbb",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0389",
+  "args": [
+   "-s",
+   "{{ \"aaaAAA\" | replace(r/a/i, \"z\") }}"
+  ],
+  "context": null,
+  "stdout": "zaaAAA",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0390",
+  "args": [
+   "-s",
+   "{{ \"aaaAAA\" | replace(r/a/g, \"z\") }}"
+  ],
+  "context": null,
+  "stdout": "zzzAAA",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0391",
+  "args": [
+   "-s",
+   "{{ \"aaaAAA\" | replace(r/a/gi, \"z\") }}"
+  ],
+  "context": null,
+  "stdout": "zzzzzz",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0392",
+  "args": [
+   "-s",
+   "{{ \"abcdef\" | reverse }}"
+  ],
+  "context": null,
+  "stdout": "fedcba",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0393",
+  "args": [
+   "-s",
+   "{% for i in [1, 2, 3, 4] | reverse %}{{ i }}{% endfor %}"
+  ],
+  "context": null,
+  "stdout": "4321",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0394",
+  "args": [
+   "-s",
+   "{{ 4.5 | round }}"
+  ],
+  "context": null,
+  "stdout": "5",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0395",
+  "args": [
+   "-s",
+   "{{ 4.5 | round(0, \"floor\") }}"
+  ],
+  "context": null,
+  "stdout": "4",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0396",
+  "args": [
+   "-s",
+   "{{ 4.12345 | round(4) }}"
+  ],
+  "context": null,
+  "stdout": "4.1235",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0397",
+  "args": [
+   "-s",
+   "{{ 4.12344 | round(4) }}"
+  ],
+  "context": null,
+  "stdout": "4.1234",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0398",
+  "args": [
+   "-s",
+   "{% for items in arr | slice(3) %}--{% for item in items %}{{ item }}{% endfor %}--{% endfor %}"
+  ],
+  "context": "{\"arr\":[1,2,3,4,5,6,7,8,9]}",
+  "stdout": "--123----456----789--",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0399",
+  "args": [
+   "-s",
+   "{% for items in arr | slice(3) %}--{% for item in items %}{{ item }}{% endfor %}--{% endfor %}"
+  ],
+  "context": "{\"arr\":[1,2,3,4,5,6,7,8,9,10]}",
+  "stdout": "--1234----567----8910--",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0400",
+  "args": [
+   "-s",
+   "{{ items | sum }}"
+  ],
+  "context": "{\"items\":[1,2,3]}",
+  "stdout": "6",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0401",
+  "args": [
+   "-s",
+   "{{ items | sum(\"value\") }}"
+  ],
+  "context": "{\"items\":[{\"value\":1},{\"value\":2},{\"value\":3}]}",
+  "stdout": "6",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0402",
+  "args": [
+   "-s",
+   "{{ items | sum(\"value\", 10) }}"
+  ],
+  "context": "{\"items\":[{\"value\":1},{\"value\":2},{\"value\":3}]}",
+  "stdout": "16",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0403",
+  "args": [
+   "-s",
+   "{% for i in [3,5,2,1,4,6] | sort %}{{ i }}{% endfor %}"
+  ],
+  "context": null,
+  "stdout": "123456",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0404",
+  "args": [
+   "-s",
+   "{% for i in [\"fOo\", \"Foo\"] | sort %}{{ i }}{% endfor %}"
+  ],
+  "context": null,
+  "stdout": "fOoFoo",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0405",
+  "args": [
+   "-s",
+   "{% for i in [1,6,3,7] | sort(true) %}{{ i }}{% endfor %}"
+  ],
+  "context": null,
+  "stdout": "7631",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0406",
+  "args": [
+   "-s",
+   "{% for i in [\"fOo\", \"Foo\"] | sort(false, true) %}{{ i }}{% endfor %}"
+  ],
+  "context": null,
+  "stdout": "FoofOo",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0407",
+  "args": [
+   "-s",
+   "{% for item in items | sort(false, false, \"name\") %}{{ item.name }}{% endfor %}"
+  ],
+  "context": "{\"items\":[{\"name\":\"james\"},{\"name\":\"fred\"},{\"name\":\"john\"}]}",
+  "stdout": "fredjamesjohn",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0408",
+  "args": [
+   "-s",
+   "{% for i in [ {n:3},{n:5},{n:2},{n:1},{n:4},{n:6}] | sort(attribute=\"n\") %}{{ i.n }}{% endfor %}"
+  ],
+  "context": null,
+  "stdout": "123456",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0409",
+  "args": [
+   "-s",
+   "{% for item in items | sort(attribute=\"meta.age\") %}{{ item.name }}{% endfor %}"
+  ],
+  "context": "{\"items\":[{\"name\":\"james\",\"meta\":{\"age\":25}},{\"name\":\"fred\",\"meta\":{\"age\":18}},{\"name\":\"john\",\"meta\":{\"age\":19}}]}",
+  "stdout": "fredjohnjames",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0410",
+  "args": [
+   "--throw-on-undefined",
+   "-s",
+   "{% for item in items | sort(attribute=\"meta.age\") %}{{ item.name }}{% endfor %}"
+  ],
+  "context": "{\"items\":[{\"name\":\"james\",\"meta\":{\"age\":25}},{\"name\":\"fred\",\"meta\":{\"age\":18}},{\"name\":\"john\",\"meta\":{\"title\":\"Developer\"}}]}",
+  "stdout": "",
+  "stderr": "Template render error: (unknown path)\n  TypeError: sort: attribute \"meta.age\" resolved to undefined\n",
+  "code": 1
+ },
+ {
+  "name": "up0411",
+  "args": [
+   "-s",
+   "{% for i in 1234 | string | list %}{{ i }},{% endfor %}"
+  ],
+  "context": null,
+  "stdout": "1,2,3,4,",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0412",
+  "args": [
+   "-s",
+   "{{ html | striptags }}"
+  ],
+  "context": "{\"html\":\"<foo>bar\"}",
+  "stdout": "bar",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0413",
+  "args": [
+   "-s",
+   "{{ html | striptags }}"
+  ],
+  "context": "{\"html\":\"  <p>an  \\n <a href=\\\"#\\\">example</a> link</p>\\n<p>to a webpage</p> <!-- <p>and some comments</p> -->\"}",
+  "stdout": "an example link to a webpage",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0414",
+  "args": [
+   "-s",
+   "{{ undefined | striptags }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0415",
+  "args": [
+   "-s",
+   "{{ null | striptags }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0416",
+  "args": [
+   "-s",
+   "{{ nothing | striptags }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0417",
+  "args": [
+   "-s",
+   "{{ html | striptags(true) }}"
+  ],
+  "context": "{\"html\":\"<div>\\n  row1\\nrow2  \\n  <strong>row3</strong>\\n</div>\\n\\n HEADER \\n\\n<ul>\\n  <li>option  1</li>\\n<li>option  2</li>\\n</ul>\"}",
+  "stdout": "row1\nrow2\nrow3\n\nHEADER\n\noption 1\noption 2",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0418",
+  "args": [
+   "-s",
+   "{{ \"foo bar baz\" | title }}"
+  ],
+  "context": null,
+  "stdout": "Foo Bar Baz",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0419",
+  "args": [
+   "-s",
+   "{{ undefined | title }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0420",
+  "args": [
+   "-s",
+   "{{ null | title }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0421",
+  "args": [
+   "-s",
+   "{{ nothing | title }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0422",
+  "args": [
+   "-s",
+   "{{ \"  foo \" | trim }}"
+  ],
+  "context": null,
+  "stdout": "foo",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0423",
+  "args": [
+   "-s",
+   "{{ \"foo bar\" | truncate(3) }}"
+  ],
+  "context": null,
+  "stdout": "foo...",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0424",
+  "args": [
+   "-s",
+   "{{ \"foo bar baz\" | truncate(6) }}"
+  ],
+  "context": null,
+  "stdout": "foo...",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0425",
+  "args": [
+   "-s",
+   "{{ \"foo bar baz\" | truncate(7) }}"
+  ],
+  "context": null,
+  "stdout": "foo bar...",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0426",
+  "args": [
+   "-s",
+   "{{ \"foo bar baz\" | truncate(5, true) }}"
+  ],
+  "context": null,
+  "stdout": "foo b...",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0427",
+  "args": [
+   "-s",
+   "{{ \"foo bar baz\" | truncate(6, true, \"?\") }}"
+  ],
+  "context": null,
+  "stdout": "foo ba?",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0428",
+  "args": [
+   "-s",
+   "{{ undefined | truncate(3) }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0429",
+  "args": [
+   "-s",
+   "{{ undefined | truncate(6) }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0430",
+  "args": [
+   "-s",
+   "{{ undefined | truncate(7) }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0431",
+  "args": [
+   "-s",
+   "{{ undefined | truncate(5, true) }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0432",
+  "args": [
+   "-s",
+   "{{ undefined | truncate(6, true, \"?\") }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0433",
+  "args": [
+   "-s",
+   "{{ null | truncate(3) }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0434",
+  "args": [
+   "-s",
+   "{{ null | truncate(6) }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0435",
+  "args": [
+   "-s",
+   "{{ null | truncate(7) }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0436",
+  "args": [
+   "-s",
+   "{{ null | truncate(5, true) }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0437",
+  "args": [
+   "-s",
+   "{{ null | truncate(6, true, \"?\") }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0438",
+  "args": [
+   "-s",
+   "{{ nothing | truncate(3) }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0439",
+  "args": [
+   "-s",
+   "{{ nothing | truncate(6) }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0440",
+  "args": [
+   "-s",
+   "{{ nothing | truncate(7) }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0441",
+  "args": [
+   "-s",
+   "{{ nothing | truncate(5, true) }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0442",
+  "args": [
+   "-s",
+   "{{ nothing | truncate(6, true, \"?\") }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0443",
+  "args": [
+   "-s",
+   "{{ \"foo\" | upper }}"
+  ],
+  "context": null,
+  "stdout": "FOO",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0444",
+  "args": [
+   "-s",
+   "{{ null | upper }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0445",
+  "args": [
+   "-s",
+   "{{ undefined | upper }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0446",
+  "args": [
+   "-s",
+   "{{ nothing | upper }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0447",
+  "args": [
+   "-s",
+   "{{ \"&\" | urlencode }}"
+  ],
+  "context": null,
+  "stdout": "%26",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0448",
+  "args": [
+   "-s",
+   "{{ arr | urlencode | safe }}"
+  ],
+  "context": "{\"arr\":[[1,2],[\"&1\",\"&2\"]]}",
+  "stdout": "1=2&%261=%262",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0449",
+  "args": [
+   "-s",
+   "{{ obj | urlencode | safe }}"
+  ],
+  "context": "{\"obj\":{\"1\":2,\"&1\":\"&2\"}}",
+  "stdout": "1=2&%261=%262",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0450",
+  "args": [
+   "-s",
+   "{{ \"foo http://www.example.com/ bar\" | urlize | safe }}"
+  ],
+  "context": null,
+  "stdout": "foo <a href=\"http://www.example.com/\">http://www.example.com/</a> bar",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0451",
+  "args": [
+   "-s",
+   "{{ \"\" | urlize }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0452",
+  "args": [
+   "-s",
+   "{{ \"foo\" | urlize }}"
+  ],
+  "context": null,
+  "stdout": "foo",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0453",
+  "args": [
+   "-s",
+   "{{ \"http://jinja.pocoo.org/docs/templates/\" | urlize | safe }}"
+  ],
+  "context": null,
+  "stdout": "<a href=\"http://jinja.pocoo.org/docs/templates/\">http://jinja.pocoo.org/docs/templates/</a>",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0454",
+  "args": [
+   "-s",
+   "{{ \"https://jinja.pocoo.org/docs/templates/\" | urlize | safe }}"
+  ],
+  "context": null,
+  "stdout": "<a href=\"https://jinja.pocoo.org/docs/templates/\">https://jinja.pocoo.org/docs/templates/</a>",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0455",
+  "args": [
+   "-s",
+   "{{ \"www.pocoo.org/docs/templates/\" | urlize | safe }}"
+  ],
+  "context": null,
+  "stdout": "<a href=\"http://www.pocoo.org/docs/templates/\">www.pocoo.org/docs/templates/</a>",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0456",
+  "args": [
+   "-s",
+   "{{ \"pocoo.org/docs/templates/\" | urlize | safe }}"
+  ],
+  "context": null,
+  "stdout": "<a href=\"http://pocoo.org/docs/templates/\">pocoo.org/docs/templates/</a>",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0457",
+  "args": [
+   "-s",
+   "{{ \"pocoo.net/docs/templates/\" | urlize | safe }}"
+  ],
+  "context": null,
+  "stdout": "<a href=\"http://pocoo.net/docs/templates/\">pocoo.net/docs/templates/</a>",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0458",
+  "args": [
+   "-s",
+   "{{ \"pocoo.com/docs/templates/\" | urlize | safe }}"
+  ],
+  "context": null,
+  "stdout": "<a href=\"http://pocoo.com/docs/templates/\">pocoo.com/docs/templates/</a>",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0459",
+  "args": [
+   "-s",
+   "{{ \"pocoo.com:80\" | urlize | safe }}"
+  ],
+  "context": null,
+  "stdout": "<a href=\"http://pocoo.com:80\">pocoo.com:80</a>",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0460",
+  "args": [
+   "-s",
+   "{{ \"pocoo.com\" | urlize | safe }}"
+  ],
+  "context": null,
+  "stdout": "<a href=\"http://pocoo.com\">pocoo.com</a>",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0461",
+  "args": [
+   "-s",
+   "{{ \"pocoo.commune\" | urlize | safe }}"
+  ],
+  "context": null,
+  "stdout": "pocoo.commune",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0462",
+  "args": [
+   "-s",
+   "{{ \"http://jinja.pocoo.org/docs/templates/\" | urlize(12, true) | safe }}"
+  ],
+  "context": null,
+  "stdout": "<a href=\"http://jinja.pocoo.org/docs/templates/\" rel=\"nofollow\">http://jinja</a>",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0463",
+  "args": [
+   "-s",
+   "{{ \"(http://jinja.pocoo.org/docs/templates/\" | urlize | safe }}"
+  ],
+  "context": null,
+  "stdout": "<a href=\"http://jinja.pocoo.org/docs/templates/\">http://jinja.pocoo.org/docs/templates/</a>",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0464",
+  "args": [
+   "-s",
+   "{{ \"<http://jinja.pocoo.org/docs/templates/\" | urlize | safe }}"
+  ],
+  "context": null,
+  "stdout": "<a href=\"http://jinja.pocoo.org/docs/templates/\">http://jinja.pocoo.org/docs/templates/</a>",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0465",
+  "args": [
+   "-s",
+   "{{ \"&lt;http://jinja.pocoo.org/docs/templates/\" | urlize | safe }}"
+  ],
+  "context": null,
+  "stdout": "<a href=\"http://jinja.pocoo.org/docs/templates/\">http://jinja.pocoo.org/docs/templates/</a>",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0466",
+  "args": [
+   "-s",
+   "{{ \"http://jinja.pocoo.org/docs/templates/,\" | urlize | safe }}"
+  ],
+  "context": null,
+  "stdout": "<a href=\"http://jinja.pocoo.org/docs/templates/\">http://jinja.pocoo.org/docs/templates/</a>",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0467",
+  "args": [
+   "-s",
+   "{{ \"http://jinja.pocoo.org/docs/templates/.\" | urlize | safe }}"
+  ],
+  "context": null,
+  "stdout": "<a href=\"http://jinja.pocoo.org/docs/templates/\">http://jinja.pocoo.org/docs/templates/</a>",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0468",
+  "args": [
+   "-s",
+   "{{ \"http://jinja.pocoo.org/docs/templates/)\" | urlize | safe }}"
+  ],
+  "context": null,
+  "stdout": "<a href=\"http://jinja.pocoo.org/docs/templates/\">http://jinja.pocoo.org/docs/templates/</a>",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0469",
+  "args": [
+   "-s",
+   "{{ \"http://jinja.pocoo.org/docs/templates/\n\" | urlize | safe }}"
+  ],
+  "context": null,
+  "stdout": "<a href=\"http://jinja.pocoo.org/docs/templates/\">http://jinja.pocoo.org/docs/templates/</a>\n",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0470",
+  "args": [
+   "-s",
+   "{{ \"http://jinja.pocoo.org/docs/templates/&gt;\" | urlize | safe }}"
+  ],
+  "context": null,
+  "stdout": "<a href=\"http://jinja.pocoo.org/docs/templates/\">http://jinja.pocoo.org/docs/templates/</a>",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0471",
+  "args": [
+   "-s",
+   "{{ \"http://testuser@testuser.com\" | urlize | safe }}"
+  ],
+  "context": null,
+  "stdout": "<a href=\"http://testuser@testuser.com\">http://testuser@testuser.com</a>",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0472",
+  "args": [
+   "-s",
+   "{{ \"testuser@testuser.com\" | urlize | safe }}"
+  ],
+  "context": null,
+  "stdout": "<a href=\"mailto:testuser@testuser.com\">testuser@testuser.com</a>",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0473",
+  "args": [
+   "-s",
+   "{{ \"foo.\" | urlize }}"
+  ],
+  "context": null,
+  "stdout": "foo.",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0474",
+  "args": [
+   "-s",
+   "{{ \"foo.foo\" | urlize }}"
+  ],
+  "context": null,
+  "stdout": "foo.foo",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0475",
+  "args": [
+   "-s",
+   "{{ \"<b>what up</b>\" | urlize | safe }}"
+  ],
+  "context": null,
+  "stdout": "<b>what up</b>",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0476",
+  "args": [
+   "-s",
+   "{{ \"what\nup\" | urlize | safe }}"
+  ],
+  "context": null,
+  "stdout": "what\nup",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0477",
+  "args": [
+   "-s",
+   "{{ \"what\tup\" | urlize | safe }}"
+  ],
+  "context": null,
+  "stdout": "what\tup",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0478",
+  "args": [
+   "-s",
+   "{{ \"foo bar baz\" | wordcount }}"
+  ],
+  "context": null,
+  "stdout": "3",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0479",
+  "args": [
+   "-s",
+   "{{ null | wordcount }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0480",
+  "args": [
+   "-s",
+   "{{ undefined | wordcount }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0481",
+  "args": [
+   "-s",
+   "{{ nothing | wordcount }}"
+  ],
+  "context": null,
+  "stdout": "",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0482",
+  "args": [
+   "-s",
+   "{{ [1,2,3] | length }}"
+  ],
+  "context": null,
+  "stdout": "3",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0483",
+  "args": [
+   "-s",
+   "{{ blah|length }}"
+  ],
+  "context": null,
+  "stdout": "0",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0484",
+  "args": [
+   "-s",
+   "{{ str | length }}"
+  ],
+  "context": "{\"str\":\"blah\"}",
+  "stdout": "4",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0485",
+  "args": [
+   "-s",
+   "{{ undefined | length }}"
+  ],
+  "context": null,
+  "stdout": "0",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0486",
+  "args": [
+   "-s",
+   "{{ null | length }}"
+  ],
+  "context": null,
+  "stdout": "0",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0487",
+  "args": [
+   "-s",
+   "{{ obj | length }}"
+  ],
+  "context": "{\"obj\":{}}",
+  "stdout": "0",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0488",
+  "args": [
+   "-s",
+   "{{ obj | length }}"
+  ],
+  "context": "{\"obj\":{\"key\":\"value\"}}",
+  "stdout": "1",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0489",
+  "args": [
+   "-s",
+   "{{ obj | length }}"
+  ],
+  "context": "{\"obj\":{\"key\":\"value\",\"length\":5}}",
+  "stdout": "2",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0490",
+  "args": [
+   "-s",
+   "{{ arr | length }}"
+  ],
+  "context": "{\"arr\":[0,1]}",
+  "stdout": "2",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0491",
+  "args": [
+   "-s",
+   "{{ arr | length }}"
+  ],
+  "context": "{\"arr\":[0,null,2]}",
+  "stdout": "3",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0492",
+  "args": [
+   "-s",
+   "{% for i in range(0, 10) %}{{ i }}{% endfor %}"
+  ],
+  "context": null,
+  "stdout": "0123456789",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0493",
+  "args": [
+   "-s",
+   "{% for i in range(10) %}{{ i }}{% endfor %}"
+  ],
+  "context": null,
+  "stdout": "0123456789",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0494",
+  "args": [
+   "-s",
+   "{% for i in range(5, 10) %}{{ i }}{% endfor %}"
+  ],
+  "context": null,
+  "stdout": "56789",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0495",
+  "args": [
+   "-s",
+   "{% for i in range(-2, 0) %}{{ i }}{% endfor %}"
+  ],
+  "context": null,
+  "stdout": "-2-1",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0496",
+  "args": [
+   "-s",
+   "{% for i in range(5, 10, 2) %}{{ i }}{% endfor %}"
+  ],
+  "context": null,
+  "stdout": "579",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0497",
+  "args": [
+   "-s",
+   "{% for i in range(5, 10, 2.5) %}{{ i }}{% endfor %}"
+  ],
+  "context": null,
+  "stdout": "57.5",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0498",
+  "args": [
+   "-s",
+   "{% for i in range(10, 5, -1) %}{{ i }}{% endfor %}"
+  ],
+  "context": null,
+  "stdout": "109876",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0499",
+  "args": [
+   "-s",
+   "{% for i in range(10, 5, -2.5) %}{{ i }}{% endfor %}"
+  ],
+  "context": null,
+  "stdout": "107.5",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0500",
+  "args": [
+   "-s",
+   "{% set cls = cycler(\"odd\", \"even\") %}{{ cls.next() }}{{ cls.next() }}{{ cls.next() }}"
+  ],
+  "context": null,
+  "stdout": "oddevenodd",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0501",
+  "args": [
+   "-s",
+   "{% set cls = cycler(\"odd\", \"even\") %}{{ cls.next() }}{{ cls.reset() }}{{ cls.next() }}"
+  ],
+  "context": null,
+  "stdout": "oddodd",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0502",
+  "args": [
+   "-s",
+   "{% set cls = cycler(\"odd\", \"even\") %}{{ cls.next() }}{{ cls.next() }}{{ cls.current }}"
+  ],
+  "context": null,
+  "stdout": "oddeveneven",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0503",
+  "args": [
+   "-s",
+   "{% set comma = joiner() %}foo{{ comma() }}bar{{ comma() }}baz{{ comma() }}"
+  ],
+  "context": null,
+  "stdout": "foobar,baz,",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0504",
+  "args": [
+   "-s",
+   "{% set pipe = joiner(\"|\") %}foo{{ pipe() }}bar{{ pipe() }}baz{{ pipe() }}"
+  ],
+  "context": null,
+  "stdout": "foobar|baz|",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0505",
+  "args": [
+   "--jinja-compat",
+   "-s",
+   "{% for i in arr[1:4] %}{{ i }}{% endfor %}"
+  ],
+  "context": "{\"arr\":[\"a\",\"b\",\"c\",\"d\",\"e\",\"f\",\"g\",\"h\"]}",
+  "stdout": "bcd",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0506",
+  "args": [
+   "--jinja-compat",
+   "-s",
+   "{% for i in arr[n:n+3] %}{{ i }}{% endfor %}"
+  ],
+  "context": "{\"n\":1,\"arr\":[\"a\",\"b\",\"c\",\"d\",\"e\",\"f\",\"g\",\"h\"]}",
+  "stdout": "bcd",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0507",
+  "args": [
+   "--jinja-compat",
+   "-s",
+   "{% for i in arr[3:] %}{{ i }}{% endfor %}"
+  ],
+  "context": "{\"arr\":[\"a\",\"b\",\"c\",\"d\",\"e\",\"f\",\"g\",\"h\"]}",
+  "stdout": "defgh",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0508",
+  "args": [
+   "--jinja-compat",
+   "-s",
+   "{% for i in arr[-3:] %}{{ i }}{% endfor %}"
+  ],
+  "context": "{\"arr\":[\"a\",\"b\",\"c\",\"d\",\"e\",\"f\",\"g\",\"h\"]}",
+  "stdout": "fgh",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0509",
+  "args": [
+   "--jinja-compat",
+   "-s",
+   "{% for i in arr[:4] %}{{ i }}{% endfor %}"
+  ],
+  "context": "{\"arr\":[\"a\",\"b\",\"c\",\"d\",\"e\",\"f\",\"g\",\"h\"]}",
+  "stdout": "abcd",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0510",
+  "args": [
+   "--jinja-compat",
+   "-s",
+   "{% for i in arr[:-3] %}{{ i }}{% endfor %}"
+  ],
+  "context": "{\"arr\":[\"a\",\"b\",\"c\",\"d\",\"e\",\"f\",\"g\",\"h\"]}",
+  "stdout": "abcde",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0511",
+  "args": [
+   "--jinja-compat",
+   "-s",
+   "{% for i in arr[::2] %}{{ i }}{% endfor %}"
+  ],
+  "context": "{\"arr\":[\"a\",\"b\",\"c\",\"d\",\"e\",\"f\",\"g\",\"h\"]}",
+  "stdout": "aceg",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0512",
+  "args": [
+   "--jinja-compat",
+   "-s",
+   "{% for i in arr[::-1] %}{{ i }}{% endfor %}"
+  ],
+  "context": "{\"arr\":[\"a\",\"b\",\"c\",\"d\",\"e\",\"f\",\"g\",\"h\"]}",
+  "stdout": "hgfedcba",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0513",
+  "args": [
+   "--jinja-compat",
+   "-s",
+   "{% for i in arr[4::-1] %}{{ i }}{% endfor %}"
+  ],
+  "context": "{\"arr\":[\"a\",\"b\",\"c\",\"d\",\"e\",\"f\",\"g\",\"h\"]}",
+  "stdout": "edcba",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0514",
+  "args": [
+   "--jinja-compat",
+   "-s",
+   "{% for i in arr[-5::-1] %}{{ i }}{% endfor %}"
+  ],
+  "context": "{\"arr\":[\"a\",\"b\",\"c\",\"d\",\"e\",\"f\",\"g\",\"h\"]}",
+  "stdout": "dcba",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0515",
+  "args": [
+   "--jinja-compat",
+   "-s",
+   "{% for i in arr[:3:-1] %}{{ i }}{% endfor %}"
+  ],
+  "context": "{\"arr\":[\"a\",\"b\",\"c\",\"d\",\"e\",\"f\",\"g\",\"h\"]}",
+  "stdout": "hgfe",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0516",
+  "args": [
+   "--jinja-compat",
+   "-s",
+   "{% for i in arr[1::2] %}{{ i }}{% endfor %}"
+  ],
+  "context": "{\"arr\":[\"a\",\"b\",\"c\",\"d\",\"e\",\"f\",\"g\",\"h\"]}",
+  "stdout": "bdfh",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0517",
+  "args": [
+   "--jinja-compat",
+   "-s",
+   "{% for i in arr[1:7:2] %}{{ i }}{% endfor %}"
+  ],
+  "context": "{\"arr\":[\"a\",\"b\",\"c\",\"d\",\"e\",\"f\",\"g\",\"h\"]}",
+  "stdout": "bdf",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0518",
+  "args": [
+   "-s",
+   "{{ foo is not callable }}"
+  ],
+  "context": "{\"foo\":\"!!!\"}",
+  "stdout": "true",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0519",
+  "args": [
+   "-s",
+   "{{ foo is defined }}"
+  ],
+  "context": null,
+  "stdout": "false",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0520",
+  "args": [
+   "-s",
+   "{{ foo is not defined }}"
+  ],
+  "context": null,
+  "stdout": "true",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0521",
+  "args": [
+   "-s",
+   "{{ foo is defined }}"
+  ],
+  "context": "{\"foo\":null}",
+  "stdout": "true",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0522",
+  "args": [
+   "-s",
+   "{{ foo is not defined }}"
+  ],
+  "context": "{\"foo\":null}",
+  "stdout": "false",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0523",
+  "args": [
+   "-s",
+   "{% if foo is defined %}defined{% else %}undefined{% endif %}"
+  ],
+  "context": "{}",
+  "stdout": "undefined",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0524",
+  "args": [
+   "-s",
+   "{% if foo is defined %}defined{% else %}undefined{% endif %}"
+  ],
+  "context": "{\"foo\":null}",
+  "stdout": "defined",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0525",
+  "args": [
+   "-s",
+   "{% if foo is not defined %}undefined{% else %}defined{% endif %}"
+  ],
+  "context": "{}",
+  "stdout": "undefined",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0526",
+  "args": [
+   "-s",
+   "{% if foo is not defined %}undefined{% else %}defined{% endif %}"
+  ],
+  "context": "{\"foo\":null}",
+  "stdout": "defined",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0527",
+  "args": [
+   "-s",
+   "{{ foo is undefined }}"
+  ],
+  "context": null,
+  "stdout": "true",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0528",
+  "args": [
+   "-s",
+   "{{ foo is not undefined }}"
+  ],
+  "context": null,
+  "stdout": "false",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0529",
+  "args": [
+   "-s",
+   "{{ foo is undefined }}"
+  ],
+  "context": "{\"foo\":null}",
+  "stdout": "false",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0530",
+  "args": [
+   "-s",
+   "{{ foo is not undefined }}"
+  ],
+  "context": "{\"foo\":null}",
+  "stdout": "true",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0531",
+  "args": [
+   "-s",
+   "{{ null is null }}"
+  ],
+  "context": null,
+  "stdout": "true",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0532",
+  "args": [
+   "-s",
+   "{{ none is none }}"
+  ],
+  "context": null,
+  "stdout": "true",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0533",
+  "args": [
+   "-s",
+   "{{ none is null }}"
+  ],
+  "context": null,
+  "stdout": "true",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0534",
+  "args": [
+   "-s",
+   "{{ foo is null }}"
+  ],
+  "context": null,
+  "stdout": "false",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0535",
+  "args": [
+   "-s",
+   "{{ foo is not null }}"
+  ],
+  "context": "{\"foo\":null}",
+  "stdout": "false",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0536",
+  "args": [
+   "-s",
+   "{{ \"6\" is divisibleby(3) }}"
+  ],
+  "context": null,
+  "stdout": "true",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0537",
+  "args": [
+   "-s",
+   "{{ 3 is not divisibleby(2) }}"
+  ],
+  "context": null,
+  "stdout": "true",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0538",
+  "args": [
+   "-s",
+   "{{ (foo | safe) is escaped }}"
+  ],
+  "context": "{\"foo\":\"foobarbaz\"}",
+  "stdout": "true",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0539",
+  "args": [
+   "-s",
+   "{{ foo is escaped }}"
+  ],
+  "context": "{\"foo\":\"foobarbaz\"}",
+  "stdout": "false",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0540",
+  "args": [
+   "-s",
+   "{{ \"5\" is even }}"
+  ],
+  "context": null,
+  "stdout": "false",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0541",
+  "args": [
+   "-s",
+   "{{ 4 is not even }}"
+  ],
+  "context": null,
+  "stdout": "false",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0542",
+  "args": [
+   "-s",
+   "{{ \"5\" is odd }}"
+  ],
+  "context": null,
+  "stdout": "true",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0543",
+  "args": [
+   "-s",
+   "{{ 4 is not odd }}"
+  ],
+  "context": null,
+  "stdout": "true",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0544",
+  "args": [
+   "-s",
+   "{{ map is mapping }}"
+  ],
+  "context": "{\"map\":{}}",
+  "stdout": "true",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0545",
+  "args": [
+   "-s",
+   "{{ 0 is falsy }}"
+  ],
+  "context": null,
+  "stdout": "true",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0546",
+  "args": [
+   "-s",
+   "{{ \"pancakes\" is not falsy }}"
+  ],
+  "context": null,
+  "stdout": "true",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0547",
+  "args": [
+   "-s",
+   "{{ null is truthy }}"
+  ],
+  "context": null,
+  "stdout": "false",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0548",
+  "args": [
+   "-s",
+   "{{ \"pancakes\" is not truthy }}"
+  ],
+  "context": null,
+  "stdout": "false",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0549",
+  "args": [
+   "-s",
+   "{{ \"5\" is greaterthan(4) }}"
+  ],
+  "context": null,
+  "stdout": "true",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0550",
+  "args": [
+   "-s",
+   "{{ 4 is not greaterthan(2) }}"
+  ],
+  "context": null,
+  "stdout": "false",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0551",
+  "args": [
+   "-s",
+   "{{ \"5\" is ge(5) }}"
+  ],
+  "context": null,
+  "stdout": "true",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0552",
+  "args": [
+   "-s",
+   "{{ 4 is not ge(2) }}"
+  ],
+  "context": null,
+  "stdout": "false",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0553",
+  "args": [
+   "-s",
+   "{{ \"5\" is lessthan(4) }}"
+  ],
+  "context": null,
+  "stdout": "false",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0554",
+  "args": [
+   "-s",
+   "{{ 4 is not lessthan(2) }}"
+  ],
+  "context": null,
+  "stdout": "true",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0555",
+  "args": [
+   "-s",
+   "{{ \"5\" is le(5) }}"
+  ],
+  "context": null,
+  "stdout": "true",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0556",
+  "args": [
+   "-s",
+   "{{ 4 is not le(2) }}"
+  ],
+  "context": null,
+  "stdout": "true",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0557",
+  "args": [
+   "-s",
+   "{{ 5 is ne(5) }}"
+  ],
+  "context": null,
+  "stdout": "false",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0558",
+  "args": [
+   "-s",
+   "{{ 4 is not ne(2) }}"
+  ],
+  "context": null,
+  "stdout": "false",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0559",
+  "args": [
+   "-s",
+   "{{ arr is not iterable }}"
+  ],
+  "context": "{\"arr\":[]}",
+  "stdout": "false",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0560",
+  "args": [
+   "-s",
+   "{{ 5 is number }}"
+  ],
+  "context": null,
+  "stdout": "true",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0561",
+  "args": [
+   "-s",
+   "{{ \"42\" is number }}"
+  ],
+  "context": null,
+  "stdout": "false",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0562",
+  "args": [
+   "-s",
+   "{{ 5 is string }}"
+  ],
+  "context": null,
+  "stdout": "false",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0563",
+  "args": [
+   "-s",
+   "{{ \"42\" is string }}"
+  ],
+  "context": null,
+  "stdout": "true",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0564",
+  "args": [
+   "-s",
+   "{{ 1 is equalto(2) }}"
+  ],
+  "context": null,
+  "stdout": "false",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0565",
+  "args": [
+   "-s",
+   "{{ 2 is not equalto(2) }}"
+  ],
+  "context": null,
+  "stdout": "false",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0566",
+  "args": [
+   "-s",
+   "{{ obj1 is sameas(obj2) }}"
+  ],
+  "context": "{\"obj1\":{},\"obj2\":{}}",
+  "stdout": "false",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0567",
+  "args": [
+   "-s",
+   "{{ \"foobar\" is lower }}"
+  ],
+  "context": null,
+  "stdout": "true",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0568",
+  "args": [
+   "-s",
+   "{{ \"Foobar\" is lower }}"
+  ],
+  "context": null,
+  "stdout": "false",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0569",
+  "args": [
+   "-s",
+   "{{ \"FOOBAR\" is upper }}"
+  ],
+  "context": null,
+  "stdout": "true",
+  "stderr": "",
+  "code": 0
+ },
+ {
+  "name": "up0570",
+  "args": [
+   "-s",
+   "{{ \"Foobar\" is upper }}"
+  ],
+  "context": null,
+  "stdout": "false",
+  "stderr": "",
+  "code": 0
+ }
+]

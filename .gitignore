@@ -1,14 +1,4 @@
-node_modules
-coverage
 .#*
 docs/_site
 docs/files
-/src/
-/index.js
-/index.js.map
-/tests/browser/nunjucks*
-.nyc_output
-/browser
-/tests/browser/precompiled-templates.js
-/samples/express/js/nunjucks.js
-/samples/express/js/templates.js
+/nunjucks-render

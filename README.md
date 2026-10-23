@@ -1,36 +1,54 @@
 # Nunjucks
 
-[![NPM Version][npm-image]][npm-url]
-[![NPM Downloads][downloads-image]][downloads-url]
 [![CI][github-actions-image]][github-actions-url]
-[![Codecov][codecov-image]][codecov-url]
 
 [Nunjucks](https://mozilla.github.io/nunjucks/) is a full featured
-templating engine for javascript. It is heavily inspired by
-[jinja2](https://jinja.palletsprojects.com/). View the docs
-[here](https://mozilla.github.io/nunjucks/).
+templating engine, heavily inspired by
+[jinja2](https://jinja.palletsprojects.com/). This is its Go implementation:
+templates render exactly as with nunjucks 3.2.4 for JavaScript, down to its
+value semantics (numbers, truthiness, string methods) and error messages. View
+the template language docs [here](https://mozilla.github.io/nunjucks/).
 
 ## Installation
 
-`npm install nunjucks`
+```bash
+go get github.com/mozilla/nunjucks
+go install github.com/mozilla/nunjucks/cmd/nunjucks-render@latest
+```
 
-To use the file watcher built-in to Nunjucks, Chokidar must be installed separately.
+The module uses the Go standard library only.
 
-`npm install nunjucks chokidar`
+## Usage
 
-(View the [CHANGELOG](https://github.com/mozilla/nunjucks/releases))
+```go
+env := nunjucks.NewEnvironment(nunjucks.NewFileSystemLoader([]string{"views"}), nunjucks.DefaultOptions())
+out, err := env.Render("index.njk", ctx) // ctx is a *js.Object, for example from js.ParseJSON
+```
+
+The `nunjucks-render` command renders one template:
+
+```bash
+nunjucks-render -p views -c context.json index.njk
+nunjucks-render -s '{{ name | upper }}' -c - <<< '{"name": "nunjucks"}'
+```
+
+Flags: `-p/--path DIR` (repeatable), `-c/--context FILE` (`-` for stdin),
+`-s/--string`, `--no-autoescape`, `--throw-on-undefined`, `--trim-blocks`,
+`--lstrip-blocks`, `--tags JSON`, `--jinja-compat` and `--dev`. The rendered
+text goes to stdout; a template error is printed to stderr with exit status 1,
+a usage error with exit status 2.
 
 ## Documentation
 
-Nunjucks info and documentation source is in [`/docs`](/docs) and publishes to https://mozilla.github.io/nunjucks/
-
-## Browser Support
-
-Supported in all modern browsers. For IE8 support, use [es5-shim](https://github.com/es-shims/es5-shim).
+The template language documentation is in [`/docs`](/docs) and publishes to
+https://mozilla.github.io/nunjucks/
 
 ## Tests
 
-Run the tests with `npm test`.
+```bash
+go vet ./...
+go test ./...
+```
 
 ## Get in touch
 
@@ -45,11 +63,5 @@ Contributions are always welcome! Before you submit an issue or pull request, pl
 [![Contributors graph. Avatars provided by https://contrib.rocks](https://contrib.rocks/image?repo=mozilla/nunjucks)](https://github.com/mozilla/nunjucks/graphs/contributors)
 
 
-[npm-image]: https://img.shields.io/npm/v/nunjucks.svg
-[npm-url]: https://npmjs.org/package/nunjucks
-[downloads-image]: https://img.shields.io/npm/dm/nunjucks.svg
-[downloads-url]: https://npmjs.org/package/nunjucks
 [github-actions-image]: https://github.com/mozilla/nunjucks/actions/workflows/tests.yml/badge.svg
 [github-actions-url]: https://github.com/mozilla/nunjucks/actions
-[codecov-image]: https://img.shields.io/codecov/c/gh/mozilla/nunjucks.svg
-[codecov-url]: https://codecov.io/gh/mozilla/nunjucks/branch/master

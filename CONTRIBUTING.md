@@ -9,12 +9,9 @@ Nunjucks has the following purpose:
 
 * Aim for templating feature parity with Jinja2.
 * Aim for templating feature parity with Twig, but only when not conflicting with Jinja2 parity.
-* Works in all node releases that are
-  [actively maintained by the Node Foundation](https://github.com/nodejs/Release#release-schedule)
-* Works in all modern browsers (with [ES5 support](http://kangax.github.io/compat-table/es5/)).
-* Works in IE8 with [es5-shim](https://github.com/es-shims/es5-shim).
-* Keep footprint browser files as small as possible (save on bandwidth, download time).
-* Keep performance as fast as possible (see benchmarks).
+* Works with the supported Go releases, using the standard library only.
+* Renders templates exactly as the JavaScript nunjucks 3.2.4 did, including its error messages.
+* Keep performance as fast as possible (see `go test -bench .`).
 * Keep maintenance as easy as possible (avoid complexity, automate what we can).
 
 Notes:
@@ -56,14 +53,9 @@ code changes, and pass with your changes. Existing tests should not break. Test
 coverage (output at the end of every test run) should never decrease after your
 changes.
 
-To install all the requirements for running the tests:
+The only requirement is a Go toolchain (see `go.mod`). To run the tests:
 
 ```bash
-npm install
-```
-
-To run the tests:
-
-```bash
-npm test
+go vet ./...
+go test ./...
 ```

@@ -1,6 +1,14 @@
 Changelog
 =========
 
+master (unreleased)
+-------------------
+
+* Rewritten in Go: the `github.com/mozilla/nunjucks` package and the
+  `nunjucks-render` command replace the JavaScript library, its browser builds
+  and the `nunjucks-precompile` command. Templates render byte for byte as in
+  3.2.4, including the JavaScript value semantics and error messages.
+
 3.2.4 (Apr 13 2023)
 ------------------
 
